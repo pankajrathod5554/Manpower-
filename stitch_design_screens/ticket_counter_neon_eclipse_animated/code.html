@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ticket Counter Ahmedabad - Premium Event Staffing</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#0c1324",
+                        "error-container": "#93000a",
+                        "surface-container-lowest": "#070d1f",
+                        "on-background": "#dce1fb",
+                        "surface-bright": "#33394c",
+                        "tertiary-container": "#ff516a",
+                        "on-secondary": "#003640",
+                        "on-primary-fixed-variant": "#5516be",
+                        "outline": "#958ea0",
+                        "surface-variant": "#2e3447",
+                        "primary": "#d0bcff",
+                        "on-tertiary-container": "#5b0017",
+                        "error": "#ffb4ab",
+                        "on-primary-container": "#340080",
+                        "inverse-surface": "#dce1fb",
+                        "surface-tint": "#d0bcff",
+                        "on-error-container": "#ffdad6",
+                        "primary-container": "#a078ff",
+                        "on-tertiary-fixed": "#40000d",
+                        "surface": "#0c1324",
+                        "surface-container-highest": "#2e3447",
+                        "tertiary-fixed": "#ffdadb",
+                        "on-secondary-container": "#00424e",
+                        "inverse-on-surface": "#2a3043",
+                        "secondary-fixed": "#acedff",
+                        "secondary": "#4cd7f6",
+                        "on-secondary-fixed": "#001f26",
+                        "surface-container-low": "#151b2d",
+                        "on-primary": "#3c0091",
+                        "on-tertiary-fixed-variant": "#92002a",
+                        "on-error": "#690005",
+                        "inverse-primary": "#6d3bd7",
+                        "primary-fixed-dim": "#d0bcff",
+                        "on-surface": "#dce1fb",
+                        "surface-container-high": "#23293c",
+                        "primary-fixed": "#e9ddff",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "on-primary-fixed": "#23005c",
+                        "surface-container": "#191f31",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "outline-variant": "#494454",
+                        "background": "#0c1324",
+                        "tertiary-fixed-dim": "#ffb2b7",
+                        "tertiary": "#ffb2b7",
+                        "on-surface-variant": "#cbc3d7",
+                        "on-tertiary": "#67001b",
+                        "secondary-container": "#03b5d3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "margin-desktop": "48px",
+                        "2xl": "64px",
+                        "gutter": "24px",
+                        "sm": "8px",
+                        "margin-mobile": "16px",
+                        "base": "4px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "xl": "40px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "42px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #020617; /* Base Dark from Style Guidance */
+            color: theme('colors.on-surface');
+            overflow-x: hidden;
+        }
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+        }
+        .glass-panel::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            z-index: -1;
+            margin: -1px;
+            border-radius: inherit;
+            background: linear-gradient(to bottom right, rgba(208, 188, 255, 0.2), rgba(76, 215, 246, 0.2));
+        }
+        .glow-hover:hover {
+            box-shadow: 0 0 20px rgba(208, 188, 255, 0.3);
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #8B5CF6, #06B6D4); /* Purple to Cyan mapped to brand vibe */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+        .btn-primary {
+            background: linear-gradient(to right, #8B5CF6, #06B6D4);
+            color: white;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+        }
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid #334155;
+            color: theme('colors.on-surface');
+            transition: all 0.3s;
+        }
+        .btn-secondary:hover {
+            border-color: #8B5CF6;
+            box-shadow: inset 0 0 10px rgba(139, 92, 246, 0.2);
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .pulse-line {
+            position: relative;
+        }
+        .pulse-line::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, #8B5CF6, #06B6D4);
+            animation: pulse-line-anim 2s infinite;
+            z-index: 0;
+        }
+        @keyframes pulse-line-anim {
+            0% { opacity: 0.3; }
+            50% { opacity: 1; box-shadow: 0 0 10px #8B5CF6; }
+            100% { opacity: 0.3; }
+        }
+
+        /* Modal Transitions */
+        .modal-overlay {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal-content {
+            transform: scale(0.95) translateY(10px);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .modal-overlay.active .modal-content {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+
+        .input-field {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            width: 100%;
+            transition: all 0.2s;
+        }
+        .input-field:focus {
+            outline: none;
+            border-color: #8B5CF6;
+            box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="font-body-md text-body-md antialiased min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-40 bg-surface/80 backdrop-blur-xl border-b border-white/10 shadow-[0_0_20px_rgba(208,188,255,0.1)]">
+<div class="flex items-center justify-between px-md md:px-margin-desktop py-sm max-w-full mx-auto w-full">
+<div class="flex items-center gap-md">
+<button aria-label="Menu" class="md:hidden text-primary active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">menu</span>
+</button>
+<div class="font-headline-md text-headline-md font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+                    Ticket Counter Ahmedabad
+                </div>
+</div>
+<nav class="hidden md:flex gap-lg">
+</nav>
+<div>
+<button class="btn-primary font-label-md text-label-md px-lg py-sm rounded-full" onclick="openModal('hireModal')">Hire Staff</button>
+</div>
+</div>
+</header>
+<main class="flex-grow pt-[80px]">
+<!-- Hero Section -->
+<section class="relative min-h-[795px] flex items-center justify-center px-margin-mobile md:px-margin-desktop overflow-hidden">
+<!-- Background Image with Overlay -->
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-b from-[#020617]/80 to-[#020617] z-10"></div>
+<img alt="" class="w-full h-full object-cover object-center opacity-40" data-alt="A massive, high-energy stadium concert viewed from the stage looking out into a sea of glowing wristbands and stage lights. The lighting is dominated by deep ultraviolet purples and piercing cyan lasers cutting through atmospheric fog. The scene conveys a sense of massive scale, professional event execution, and VIP nightlife exclusivity, perfectly matching the Neon Eclipse brand aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbmYoNSTGohCiLgsKBMgD9syuKIkTmT4_UWzD_VMVbPKFXcNX4ln6o78UUC5FxG4Fsy38dYVDvEPX0YMR0ZdgMPRYvdfNKcndPaYfMbP_npVTSxGNxdgpeb9gUxEYDG82jnw1TZQHym-YkA3TkMCPnpcXFlfNZT0aV09HQrcCKOk8WEOnAQZ8B9QDP8YiJHIMN331W3nNEzjq_7ONr9lkW7nm-7y-eBeoIm9Mligk6nHzeTYevEfNqYKimMJDwoOhV0MzKCB3hKomG"/>
+</div>
+<div class="relative z-10 glass-panel rounded-2xl p-xl max-w-4xl mx-auto text-center mt-xl shadow-2xl animate-float">
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg mb-lg">
+<span class="text-on-surface">Professional Event Manpower</span> <br/>
+<span class="gradient-text">Across India</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-xl max-w-2xl mx-auto">
+                    From IPL Matches to Luxury Weddings, We Provide Verified Staff Within 24 Hours. Elite execution starts with elite personnel.
+                </p>
+<div class="flex flex-col sm:flex-row gap-md justify-center items-center">
+<button class="btn-primary font-label-md text-label-md px-xl py-md rounded-full w-full sm:w-auto flex items-center justify-center gap-sm" onclick="openModal('hireModal')">
+                        🚀 Hire Staff Now
+                    </button>
+<button class="btn-secondary font-label-md text-label-md px-xl py-md rounded-full w-full sm:w-auto flex items-center justify-center gap-sm" onclick="openModal('joinModal')">
+                        👥 Join Our Team
+                    </button>
+</div>
+<!-- Floating Icons Micro-interaction area -->
+<div class="absolute -top-10 -left-10 w-24 h-24 glass-panel rounded-full flex items-center justify-center animate-bounce duration-1000 hidden md:flex border-primary/30">
+<span class="material-symbols-outlined text-secondary" style="font-size: 40px;">sports_cricket</span>
+</div>
+<div class="absolute -bottom-10 -right-10 w-24 h-24 glass-panel rounded-full flex items-center justify-center animate-bounce duration-1000 delay-300 hidden md:flex border-secondary/30">
+<span class="material-symbols-outlined text-primary" style="font-size: 40px;">music_note</span>
+</div>
+</div>
+</section>
+<!-- Trust Counters -->
+<section class="py-2xl px-margin-mobile md:px-margin-desktop bg-surface-container-lowest/50" id="trust-section">
+<div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-lg">
+<div class="glass-panel rounded-xl p-lg text-center glow-hover animate-float" style="animation-delay: 0s;">
+<div class="font-display-lg text-display-lg text-secondary mb-sm"><span class="counter" data-target="5">0</span>+</div>
+<div class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Years Experience</div>
+</div>
+<div class="glass-panel rounded-xl p-lg text-center glow-hover animate-float" style="animation-delay: 0.2s;">
+<div class="font-display-lg text-display-lg text-primary mb-sm"><span class="counter" data-target="1000">0</span>+</div>
+<div class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Events Managed</div>
+</div>
+<div class="glass-panel rounded-xl p-lg text-center glow-hover animate-float" style="animation-delay: 0.4s;">
+<div class="font-display-lg text-display-lg text-secondary mb-sm"><span class="counter" data-target="5000">0</span>+</div>
+<div class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Trained Staff</div>
+</div>
+</div>
+</section>
+<!-- 3 Easy Steps -->
+<section class="py-2xl px-margin-mobile md:px-margin-desktop">
+<div class="max-w-6xl mx-auto">
+<h2 class="font-headline-lg text-headline-lg text-center mb-2xl">Get Event Staff In <span class="gradient-text">Just 3 Steps</span></h2>
+<div class="relative">
+<!-- Connecting Line Desktop -->
+<div class="hidden md:block absolute top-1/2 left-0 w-full h-[2px] bg-surface-variant -translate-y-1/2 z-0 pulse-line" style="height: 2px; width: 100%; top: 50%; left: 0; transform: translateY(-50%);">
+</div>
+<!-- Connecting Line Mobile -->
+<div class="md:hidden absolute top-0 left-1/2 w-[2px] h-full bg-surface-variant -translate-x-1/2 z-0 pulse-line" style="width: 2px; height: 100%; top: 0; left: 50%; transform: translateX(-50%);">
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-xl relative z-10">
+<!-- Step 1 -->
+<div class="glass-panel rounded-xl p-xl flex flex-col items-center text-center glow-hover relative bg-[#0F172A]/90 animate-float" style="animation-delay: 0s;">
+<div class="w-16 h-16 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center mb-md font-headline-md font-bold shadow-[0_0_15px_rgba(208,188,255,0.4)]">
+                                1
+                            </div>
+<h3 class="font-headline-md text-headline-md mb-sm text-on-surface">Submit Requirement</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Tell us what you need, when, and where. We handle the rest.</p>
+</div>
+<!-- Step 2 -->
+<div class="glass-panel rounded-xl p-xl flex flex-col items-center text-center glow-hover relative bg-[#0F172A]/90 animate-float" style="animation-delay: 0.2s;">
+<div class="w-16 h-16 rounded-full bg-surface-variant text-on-surface-variant border border-primary flex items-center justify-center mb-md font-headline-md font-bold">
+                                2
+                            </div>
+<h3 class="font-headline-md text-headline-md mb-sm text-on-surface">Staff Selection</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">We curate the best-verified profiles matching your exact criteria.</p>
+</div>
+<!-- Step 3 -->
+<div class="glass-panel rounded-xl p-xl flex flex-col items-center text-center glow-hover relative bg-[#0F172A]/90 animate-float" style="animation-delay: 0.4s;">
+<div class="w-16 h-16 rounded-full bg-surface-variant text-on-surface-variant border border-secondary flex items-center justify-center mb-md font-headline-md font-bold">
+                                3
+                            </div>
+<h3 class="font-headline-md text-headline-md mb-sm text-on-surface">Deployment</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Staff arrives on-site, ready to execute with professional precision.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Join Our Team Promo -->
+<section class="py-2xl px-margin-mobile md:px-margin-desktop bg-gradient-to-br from-[#070d1f] to-[#151b2d] border-t border-b border-surface-variant/50">
+<div class="max-w-4xl mx-auto glass-panel rounded-2xl p-xl md:p-2xl text-center shadow-2xl relative overflow-hidden animate-float">
+<div class="absolute -right-20 -top-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+<div class="absolute -left-20 -bottom-20 w-64 h-64 bg-secondary/10 rounded-full blur-3xl"></div>
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg mb-md relative z-10">
+                    Ready to <span class="gradient-text">Join Our Team?</span>
+</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-lg max-w-2xl mx-auto relative z-10">
+                    Work at premier events across India. Flexible schedules, verified payments, and a community of professionals.
+                </p>
+<button class="btn-primary font-label-md text-label-md px-xl py-md rounded-full relative z-10" onclick="openModal('joinModal')">
+                    Apply Now
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-dim w-full py-xl border-t border-outline-variant/30 flat flex flex-col md:flex-row justify-between items-center px-margin-desktop gap-lg mt-auto">
+<div class="font-headline-md text-headline-md text-primary font-bold">
+            Ticket Counter Ahmedabad
+        </div>
+<div class="flex gap-lg flex-wrap justify-center">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary-fixed-dim transition-opacity duration-300" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary-fixed-dim transition-opacity duration-300" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary-fixed-dim transition-opacity duration-300" href="#">Contact Us</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-secondary-fixed-dim transition-opacity duration-300" href="#">Careers</a>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">
+            © 2024 Ticket Counter Ahmedabad. All rights reserved.
+        </div>
+</footer>
+<!-- Hire Staff Modal -->
+<div class="fixed inset-0 z-50 flex items-center justify-center modal-overlay p-4 bg-black/60 backdrop-blur-sm" id="hireModal">
+<div class="glass-panel w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl p-6 md:p-8 modal-content relative">
+<button class="absolute top-4 right-4 text-on-surface-variant hover:text-white" onclick="closeModal('hireModal')">
+<span class="material-symbols-outlined">close</span>
+</button>
+<h2 class="font-headline-lg text-headline-lg mb-6 gradient-text text-center">Hire Event Staff</h2>
+<div id="hireFormContent">
+<form class="grid grid-cols-1 md:grid-cols-2 gap-4" onsubmit="submitHireForm(event)">
+<div class="md:col-span-2">
+<label class="block text-sm font-medium mb-1 text-on-surface-variant">Full Name</label>
+<input class="input-field" required="" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium mb-1 text-on-surface-variant">Company Name</label>
+<input class="input-field" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium mb-1 text-on-surface-variant">Mobile</label>
+<input class="input-field" required="" type="tel"/>
+</div>
+<div class="md:col-span-2">
+<label class="block text-sm font-medium mb-1 text-on-surface-variant">Email</label>
+<input class="input-field" required="" type="email"/>
+</div>
+<div>
+<label class="block text-sm font-medium mb-1 text-on-surface-variant">Event Name</label>
+<input class="input-field" required="" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium mb-1 text-on-surface-variant">Event Type</label>
+<select class="input-field">
+<option>Corporate Event</option>
+<option>Wedding</option>
+<option>Sports Event</option>
+<option>Concert</option>
+<option>Other</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium mb-1 text-on-surface-variant">Event Date</label>
+<input class="input-field" required="" type="date"/>
+</div>
+<div>
+<label class="block text-sm font-medium mb-1 text-on-surface-variant">Staff Count Needed</label>
+<input class="input-field" min="1" required="" type="number"/>
+</div>
+<div class="md:col-span-2">
+<label class="block text-sm font-medium mb-1 text-on-surface-variant">Location</label>
+<input class="input-field" required="" type="text"/>
+</div>
+<div class="md:col-span-2 mt-4">
+<button class="btn-primary w-full py-3 rounded-xl font-bold text-lg" type="submit">Submit Request</button>
+</div>
+</form>
+</div>
+<div class="hidden text-center py-12" id="hireSuccessMessage">
+<div class="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6 text-green-400">
+<span class="material-symbols-outlined" style="font-size: 48px;">check_circle</span>
+</div>
+<h3 class="text-2xl font-bold text-white mb-2">Thank You</h3>
+<p class="text-on-surface-variant text-lg">Our Team Will Contact You Within 30 Minutes.</p>
+<button class="mt-8 btn-secondary px-8 py-2 rounded-full" onclick="closeModal('hireModal')">Close</button>
+</div>
+</div>
+</div>
+<!-- Join Team Modal -->
+<div class="fixed inset-0 z-50 flex items-center justify-center modal-overlay p-4 bg-black/60 backdrop-blur-sm" id="joinModal">
+<div class="glass-panel w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl p-6 md:p-8 modal-content relative">
+<button class="absolute top-4 right-4 text-on-surface-variant hover:text-white" onclick="closeModal('joinModal')">
+<span class="material-symbols-outlined">close</span>
+</button>
+<h2 class="font-headline-lg text-headline-lg mb-6 gradient-text text-center">Join Our Team</h2>
+<form class="grid grid-cols-1 md:grid-cols-2 gap-4" onsubmit="event.preventDefault(); alert('Application Submitted!'); closeModal('joinModal');">
+<div class="md:col-span-2">
+<label class="block text-sm font-medium mb-1 text-on-surface-variant">Full Name</label>
+<input class="input-field" required="" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium mb-1 text-on-surface-variant">Mobile Number</label>
+<input class="input-field" required="" type="tel"/>
+</div>
+<div>
+<label class="block text-sm font-medium mb-1 text-on-surface-variant">WhatsApp Number</label>
+<input class="input-field" required="" type="tel"/>
+</div>
+<div class="md:col-span-2">
+<label class="block text-sm font-medium mb-1 text-on-surface-variant">Email</label>
+<input class="input-field" required="" type="email"/>
+</div>
+<div>
+<label class="block text-sm font-medium mb-1 text-on-surface-variant">Age</label>
+<input class="input-field" min="18" required="" type="number"/>
+</div>
+<div>
+<label class="block text-sm font-medium mb-1 text-on-surface-variant">Experience</label>
+<select class="input-field">
+<option>Fresher</option>
+<option>1-2 Years</option>
+<option>3-5 Years</option>
+<option>5+ Years</option>
+</select>
+</div>
+<div>
+<label class="block text-sm font-medium mb-1 text-on-surface-variant">City</label>
+<input class="input-field" required="" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium mb-1 text-on-surface-variant">State</label>
+<input class="input-field" required="" type="text"/>
+</div>
+<div class="md:col-span-2 mt-2">
+<label class="block text-sm font-medium mb-2 text-on-surface-variant">Upload Resume</label>
+<div class="border-2 border-dashed border-surface-variant rounded-xl p-4 text-center cursor-pointer hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-3xl mb-2 text-on-surface-variant">upload_file</span>
+<p class="text-sm text-on-surface-variant">Click to upload or drag and drop</p>
+<input class="hidden" type="file"/>
+</div>
+</div>
+<div class="md:col-span-2 mt-2">
+<label class="block text-sm font-medium mb-2 text-on-surface-variant">Upload Aadhaar</label>
+<div class="border-2 border-dashed border-surface-variant rounded-xl p-4 text-center cursor-pointer hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-3xl mb-2 text-on-surface-variant">badge</span>
+<p class="text-sm text-on-surface-variant">Click to upload or drag and drop</p>
+<input class="hidden" type="file"/>
+</div>
+</div>
+<div class="md:col-span-2 mt-4">
+<button class="btn-primary w-full py-3 rounded-xl font-bold text-lg" type="submit">Submit Application</button>
+</div>
+</form>
+</div>
+</div>
+<script>
+    // Modal Logic
+    function openModal(id) {
+        document.getElementById(id).classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(id) {
+        document.getElementById(id).classList.remove('active');
+        document.body.style.overflow = 'auto';
+        
+        // Reset hire form state if it's the hire modal
+        if(id === 'hireModal') {
+            setTimeout(() => {
+                document.getElementById('hireFormContent').classList.remove('hidden');
+                document.getElementById('hireSuccessMessage').classList.add('hidden');
+                document.querySelector('#hireModal form').reset();
+            }, 300);
+        }
+    }
+
+    function submitHireForm(e) {
+        e.preventDefault();
+        document.getElementById('hireFormContent').classList.add('hidden');
+        document.getElementById('hireSuccessMessage').classList.remove('hidden');
+    }
+
+    // Close modals on clicking outside
+    window.onclick = function(event) {
+        if (event.target.classList.contains('modal-overlay')) {
+            closeModal(event.target.id);
+        }
+    }
+
+    // Counter Animation Logic
+    const counters = document.querySelectorAll('.counter');
+    const speed = 200; // The lower the slower
+
+    const animateCounters = () => {
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const inc = target / speed;
+
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + inc);
+                    setTimeout(updateCount, 1);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+            updateCount();
+        });
+    }
+
+    // Intersection Observer for Counters
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounters();
+                observer.unobserve(entry.target); // Only animate once
+            }
+        });
+    }, { threshold: 0.5 });
+
+    const trustSection = document.getElementById('trust-section');
+    if (trustSection) {
+        observer.observe(trustSection);
+    }
+</script>
+</body></html>

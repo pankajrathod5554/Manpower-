@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Services - Ticket Counter Ahmedabad</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-container": "#340080",
+                        "primary-fixed-dim": "#d0bcff",
+                        "secondary": "#4cd7f6",
+                        "primary-container": "#a078ff",
+                        "inverse-surface": "#dce1fb",
+                        "inverse-primary": "#6d3bd7",
+                        "tertiary": "#ffb2b7",
+                        "on-error": "#690005",
+                        "secondary-fixed": "#acedff",
+                        "on-tertiary-fixed": "#40000d",
+                        "background": "#0c1324",
+                        "tertiary-fixed": "#ffdadb",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "on-primary-fixed-variant": "#5516be",
+                        "surface-container": "#191f31",
+                        "secondary-container": "#03b5d3",
+                        "on-secondary-container": "#00424e",
+                        "error-container": "#93000a",
+                        "on-surface": "#dce1fb",
+                        "surface-container-highest": "#2e3447",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "on-secondary": "#003640",
+                        "surface-variant": "#2e3447",
+                        "primary": "#d0bcff",
+                        "surface-bright": "#33394c",
+                        "surface-tint": "#d0bcff",
+                        "on-surface-variant": "#cbc3d7",
+                        "on-error-container": "#ffdad6",
+                        "error": "#ffb4ab",
+                        "tertiary-container": "#ff516a",
+                        "surface-container-low": "#151b2d",
+                        "surface-container-high": "#23293c",
+                        "on-tertiary-container": "#5b0017",
+                        "primary-fixed": "#e9ddff",
+                        "on-primary-fixed": "#23005c",
+                        "tertiary-fixed-dim": "#ffb2b7",
+                        "on-primary": "#3c0091",
+                        "surface-dim": "#0c1324",
+                        "outline": "#958ea0",
+                        "surface": "#0c1324",
+                        "on-secondary-fixed": "#001f26",
+                        "inverse-on-surface": "#2a3043",
+                        "outline-variant": "#494454",
+                        "on-background": "#dce1fb",
+                        "on-tertiary-fixed-variant": "#92002a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "gutter": "24px",
+                        "margin-desktop": "48px",
+                        "base": "4px",
+                        "2xl": "64px",
+                        "md": "16px",
+                        "sm": "8px",
+                        "xl": "40px",
+                        "margin-mobile": "16px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["36px", { "lineHeight": "42px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(25, 31, 49, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        .glass-header {
+            background: rgba(12, 19, 36, 0.8);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #d0bcff 0%, #4cd7f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .floating-glow {
+            filter: blur(120px);
+            opacity: 0.15;
+            pointer-events: none;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col selection:bg-primary/30 selection:text-primary">
+<!-- Sticky Glassmorphism Header -->
+<header class="sticky top-0 w-full z-50 glass-header">
+<div class="max-w-[1440px] mx-auto flex items-center justify-between px-margin-mobile md:px-margin-desktop h-20">
+<div class="flex flex-col">
+<span class="font-headline-md text-primary leading-tight">Ticket Counter Ahmedabad</span>
+<span class="text-[10px] uppercase tracking-[0.2em] text-on-surface-variant font-bold opacity-70">Premium Event Logistics</span>
+</div>
+<!-- Desktop Nav -->
+<nav class="hidden lg:flex items-center gap-xl">
+<a class="text-label-md hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-label-md text-primary font-bold border-b-2 border-primary" href="#">Services</a>
+<a class="text-label-md hover:text-primary transition-colors" href="#">Join Team</a>
+<a class="text-label-md hover:text-primary transition-colors" href="#">About</a>
+<a class="text-label-md hover:text-primary transition-colors" href="#">Contact</a>
+</nav>
+<div class="flex items-center gap-md">
+<div class="hidden sm:flex items-center gap-sm mr-md border-r border-outline-variant/30 pr-md">
+<a class="p-2 hover:bg-surface-container-high rounded-full transition-colors" href="tel:+1234567890" title="Call Us">
+<span class="material-symbols-outlined text-secondary">call</span>
+</a>
+<a class="p-2 hover:bg-surface-container-high rounded-full transition-colors" href="https://wa.me/1234567890" title="WhatsApp">
+<svg class="w-6 h-6 text-green-400" fill="currentColor" viewbox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.232 3.483 8.413-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.499-5.688-1.447l-6.308 1.654zm6.757-4.038c1.454.86 3.035 1.314 4.655 1.315 4.904 0 8.892-3.988 8.894-8.894.001-2.378-.924-4.613-2.606-6.295-1.682-1.681-3.918-2.605-6.295-2.606-4.906 0-8.894 3.988-8.896 8.894-.001 1.706.485 3.374 1.404 4.81l-.927 3.386 3.475-.91zm11.215-7.384c-.312-.156-1.842-.909-2.127-1.013-.286-.104-.494-.156-.701.156-.207.312-.803 1.013-.984 1.221-.182.208-.363.234-.675.078-.312-.156-1.316-.485-2.507-1.547-.927-.827-1.552-1.849-1.734-2.16-.182-.312-.019-.481.137-.636.141-.14.312-.363.468-.545.156-.182.208-.312.312-.52.104-.208.052-.389-.026-.545-.078-.156-.701-1.689-.961-2.313-.253-.607-.511-.525-.701-.535l-.597-.011c-.207 0-.545.078-.831.389-.286.312-1.091 1.065-1.091 2.598s1.117 3.013 1.272 3.221c.156.208 2.199 3.357 5.327 4.704.744.321 1.324.512 1.775.656.747.237 1.427.203 1.965.123.599-.089 1.842-.753 2.102-1.481.259-.727.259-1.35.182-1.481-.078-.13-.286-.208-.597-.364z"></path></svg>
+</a>
+</div>
+<button class="bg-primary text-on-primary-container px-lg py-sm rounded-full font-label-md hover:shadow-lg hover:shadow-primary/20 transition-all active:scale-95">
+                    Hire Staff
+                </button>
+<!-- Mobile Menu Trigger -->
+<button class="lg:hidden p-2 text-on-surface">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-1 relative overflow-x-hidden">
+<!-- Ambient Glows -->
+<div class="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/20 floating-glow rounded-full"></div>
+<div class="absolute bottom-[20%] left-0 w-[500px] h-[500px] bg-secondary/10 floating-glow rounded-full"></div>
+<div class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop py-2xl">
+<!-- Hero Section -->
+<section class="max-w-4xl mb-2xl">
+<div class="inline-flex items-center gap-sm px-md py-xs rounded-full bg-primary/10 border border-primary/20 mb-lg">
+<span class="material-symbols-outlined text-secondary text-[18px]">verified</span>
+<span class="font-label-sm text-primary uppercase tracking-widest">Gujarat's Premium Choice</span>
+</div>
+<h1 class="font-display-lg-mobile md:font-display-lg text-on-background mb-lg leading-[1.1]">
+                    Elite Event Staffing <br/>
+<span class="text-gradient">Professional Solutions.</span>
+</h1>
+<p class="font-body-lg text-on-surface-variant max-w-2xl">
+                    Experience unmatched professionalism with our specialized event workforce. From critical security details to high-touch concierge services, we ensure your event runs with absolute precision and elegance.
+                </p>
+</section>
+<!-- Services Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg lg:gap-xl">
+<!-- Service 1: Security Guards -->
+<article class="glass-card rounded-2xl overflow-hidden group flex flex-col h-full border border-outline-variant/20 hover:border-primary/40 transition-all duration-500">
+<div class="relative h-[300px] overflow-hidden">
+<img alt="Security Guards" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApWKMHXmK2VApxU3SiHuvQK3g5CDjEhhNY78B_uelUknWYtRzS9PV0ytQGmdGWOVH2QjkVxgNSC_gqdz6JsjuyiQ4dLGQS7boyVzbOYhIja3eZUpmnWw_uH8VASVWkYGEBFs-D2C-lk5e4OHLBdSAidck2fa5AQw_0kTOqCprJkmBSD9_Ml7sIKqBSMcrP7pCBgwKsBjkB3zQPxZ4LsTYm3XYeijL0N4WB8X_w4xxmjxSagQojulxAUyNCzcH4QuBS-n4FetfiJpsP"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+<div class="absolute top-md right-md glass-card px-md py-xs rounded-lg flex items-center gap-sm">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="text-label-sm text-on-background uppercase tracking-tight">Active Duty</span>
+</div>
+</div>
+<div class="p-lg flex flex-col flex-1">
+<h2 class="font-headline-md text-on-surface mb-md flex items-center gap-md">
+<span class="material-symbols-outlined text-primary p-2 bg-primary/10 rounded-lg">security</span>
+                            Security Guards
+                        </h2>
+<p class="font-body-md text-on-surface-variant mb-xl">
+                            Our guards are trained for precision perimeter control, asset protection, and crisis management for large-scale corporate and private venues.
+                        </p>
+<ul class="space-y-sm mb-auto">
+<li class="flex items-center gap-sm text-on-background/80">
+<span class="material-symbols-outlined text-secondary text-base">check_circle</span>
+                                Crowd control &amp; tactical surveillance
+                            </li>
+<li class="flex items-center gap-sm text-on-background/80">
+<span class="material-symbols-outlined text-secondary text-base">check_circle</span>
+                                Emergency &amp; first-aid certified
+                            </li>
+<li class="flex items-center gap-sm text-on-background/80">
+<span class="material-symbols-outlined text-secondary text-base">check_circle</span>
+                                Discretion &amp; protocol excellence
+                            </li>
+</ul>
+<div class="mt-2xl flex gap-md">
+<button class="flex-1 bg-primary text-on-primary-container py-md rounded-xl font-label-md hover:opacity-90 transition-opacity">Book Now</button>
+<button class="px-md border border-outline-variant rounded-xl hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">info</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Service 2: Bouncers -->
+<article class="glass-card rounded-2xl overflow-hidden group flex flex-col h-full border border-outline-variant/20 hover:border-primary/40 transition-all duration-500">
+<div class="relative h-[300px] overflow-hidden">
+<img alt="Bouncers" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqtDjLI9y7eJdww5zw7BYg-akPz1MgJfb6Ducnka57igzABBvHhbQeuLrRSIvjaa9mnDQdGg6hApM63vdY7VsuT4pRYWvOXxP06u0Qp4IMegxGqD912CE2ufw4R0s8s6IxOFMxrvRsX4taK6kv0dubjCm3tbajIfC1Sxy_heZ6-_4uVOMky3VxHwpyWgCshlggg83ab5BysGbXBVaEwSEuvb7KRo89VYgZpeYyRhKnpV7n3tMiG9UtuiGy19x4HkjTpfNfF848xy0m"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+</div>
+<div class="p-lg flex flex-col flex-1">
+<h2 class="font-headline-md text-on-surface mb-md flex items-center gap-md">
+<span class="material-symbols-outlined text-primary p-2 bg-primary/10 rounded-lg">shield</span>
+                            Elite Bouncers
+                        </h2>
+<p class="font-body-md text-on-surface-variant mb-xl">
+                            Imposing yet articulate. Our bouncers specialize in strict access management and conflict de-escalation for premium clubs and VIP events.
+                        </p>
+<ul class="space-y-sm mb-auto">
+<li class="flex items-center gap-sm text-on-background/80">
+<span class="material-symbols-outlined text-secondary text-base">check_circle</span>
+                                Strict guestlist &amp; age verification
+                            </li>
+<li class="flex items-center gap-sm text-on-background/80">
+<span class="material-symbols-outlined text-secondary text-base">check_circle</span>
+                                Rapid incident response protocols
+                            </li>
+<li class="flex items-center gap-sm text-on-background/80">
+<span class="material-symbols-outlined text-secondary text-base">check_circle</span>
+                                High-profile celebrity escorting
+                            </li>
+</ul>
+<div class="mt-2xl flex gap-md">
+<button class="flex-1 bg-primary text-on-primary-container py-md rounded-xl font-label-md hover:opacity-90 transition-opacity">Book Now</button>
+<button class="px-md border border-outline-variant rounded-xl hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">info</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Service 3: Supervisors -->
+<article class="glass-card rounded-2xl overflow-hidden group flex flex-col h-full border border-outline-variant/20 hover:border-primary/40 transition-all duration-500">
+<div class="relative h-[300px] overflow-hidden">
+<img alt="Supervisors" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiS62SNFWMHAo6YO6FK95uCzmkQuTqxRaLHalRcVolEPKdbT5a7qppRpBTTHGSXkZopbU3fEbSkPy1OT9mprbKP_OeVgn5os2GGcvf_4gH4hj46hG41p8D7EJ6xRxqQIGaggUwG4LVj9RS8IPPVY3pyTBQ_pfs8NBh5XFESdurgKQo2zpWPPTHJOBBplo1MHghrJ9Ws7aAv8ivwuSoQDi1UUifJ4j6lBpvdWhse2F2dNzd7YqMk8_MpwzG1EWrGPbn8UCWnHkHfKxG"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+</div>
+<div class="p-lg flex flex-col flex-1">
+<h2 class="font-headline-md text-on-surface mb-md flex items-center gap-md">
+<span class="material-symbols-outlined text-primary p-2 bg-primary/10 rounded-lg">manage_accounts</span>
+                            Event Supervisors
+                        </h2>
+<p class="font-body-md text-on-surface-variant mb-xl">
+                            Strategic coordinators who bridge the gap between event planners and ground staff, ensuring every logistical detail is executed perfectly.
+                        </p>
+<ul class="space-y-sm mb-auto">
+<li class="flex items-center gap-sm text-on-background/80">
+<span class="material-symbols-outlined text-secondary text-base">check_circle</span>
+                                Staff deployment &amp; shift management
+                            </li>
+<li class="flex items-center gap-sm text-on-background/80">
+<span class="material-symbols-outlined text-secondary text-base">check_circle</span>
+                                Vendor liaison &amp; backstage logistics
+                            </li>
+<li class="flex items-center gap-sm text-on-background/80">
+<span class="material-symbols-outlined text-secondary text-base">check_circle</span>
+                                Post-event reporting &amp; compliance
+                            </li>
+</ul>
+<div class="mt-2xl flex gap-md">
+<button class="flex-1 bg-transparent border border-primary text-primary py-md rounded-xl font-label-md hover:bg-primary/5 transition-colors">Book Now</button>
+<button class="px-md border border-outline-variant rounded-xl hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">info</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Service 4: Ground Staff -->
+<article class="glass-card rounded-2xl overflow-hidden group flex flex-col h-full border border-outline-variant/20 hover:border-primary/40 transition-all duration-500">
+<div class="relative h-[300px] overflow-hidden">
+<img alt="Ground Staff" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_NW9OkFuWxETX4V0hBoH3oxhXKvkjvLFeNcekztbYBo6KkWMmQXC5KUetYy2NllmfwVpwK0w-d2GPJbO_mSCOaGqmbaV1_AFFeRQBOImL5T3jeWQvMWV3obtdW03MRtvYx2VIfFntbxx2raUZpeLlQzJHyRYFwlw1ghJuh2J66yTL5L7jF5U4MJiU7FYWak1ET2cTdX4xx_N3lZZwS14QZjPaz8zlEdZhx34yymUOZHi4de_JBK_0DnXAlpwor0bwORx8UMlfRrjo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+</div>
+<div class="p-lg flex flex-col flex-1">
+<h2 class="font-headline-md text-on-surface mb-md flex items-center gap-md">
+<span class="material-symbols-outlined text-primary p-2 bg-primary/10 rounded-lg">groups</span>
+                            Hospitality Ground Staff
+                        </h2>
+<p class="font-body-md text-on-surface-variant mb-xl">
+                            The professional face of your event. Courteous, well-groomed personnel for registration, guest relations, and VIP concierge services.
+                        </p>
+<ul class="space-y-sm mb-auto">
+<li class="flex items-center gap-sm text-on-background/80">
+<span class="material-symbols-outlined text-secondary text-base">check_circle</span>
+                                High-speed registration &amp; QR check-in
+                            </li>
+<li class="flex items-center gap-sm text-on-background/80">
+<span class="material-symbols-outlined text-secondary text-base">check_circle</span>
+                                VIP seating &amp; guest assistance
+                            </li>
+<li class="flex items-center gap-sm text-on-background/80">
+<span class="material-symbols-outlined text-secondary text-base">check_circle</span>
+                                Multilingual front-desk support
+                            </li>
+</ul>
+<div class="mt-2xl flex gap-md">
+<button class="flex-1 bg-transparent border border-primary text-primary py-md rounded-xl font-label-md hover:bg-primary/5 transition-colors">Book Now</button>
+<button class="px-md border border-outline-variant rounded-xl hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">info</span>
+</button>
+</div>
+</div>
+</article>
+</div>
+</div>
+</main>
+<!-- Floating Action Buttons -->
+<div class="fixed bottom-lg right-lg z-50 flex flex-col gap-sm">
+<a class="w-14 h-14 bg-[#25D366] text-[#ffffff] rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform animate-float" href="https://wa.me/1234567890" title="Chat with us">
+<svg class="w-8 h-8" fill="currentColor" viewbox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.246 2.248 3.484 5.232 3.483 8.413-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.499-5.688-1.447l-6.308 1.654zm6.757-4.038c1.454.86 3.035 1.314 4.655 1.315 4.904 0 8.892-3.988 8.894-8.894.001-2.378-.924-4.613-2.606-6.295-1.682-1.681-3.918-2.605-6.295-2.606-4.906 0-8.894 3.988-8.896 8.894-.001 1.706.485 3.374 1.404 4.81l-.927 3.386 3.475-.91zm11.215-7.384c-.312-.156-1.842-.909-2.127-1.013-.286-.104-.494-.156-.701.156-.207.312-.803 1.013-.984 1.221-.182.208-.363.234-.675.078-.312-.156-1.316-.485-2.507-1.547-.927-.827-1.552-1.849-1.734-2.16-.182-.312-.019-.481.137-.636.141-.14.312-.363.468-.545.156-.182.208-.312.312-.52.104-.208.052-.389-.026-.545-.078-.156-.701-1.689-.961-2.313-.253-.607-.511-.525-.701-.535l-.597-.011c-.207 0-.545.078-.831.389-.286.312-1.091 1.065-1.091 2.598s1.117 3.013 1.272 3.221c.156.208 2.199 3.357 5.327 4.704.744.321 1.324.512 1.775.656.747.237 1.427.203 1.965.123.599-.089 1.842-.753 2.102-1.481.259-.727.259-1.35.182-1.481-.078-.13-.286-.208-.597-.364z"></path></svg>
+</a>
+<a class="w-14 h-14 bg-primary text-on-primary rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform" href="tel:+1234567890" title="Call Us">
+<span class="material-symbols-outlined text-[28px]">call</span>
+</a>
+</div>
+<!-- 5-Column Footer -->
+<footer class="w-full bg-surface-container-lowest border-t border-outline-variant/10 pt-2xl pb-lg px-margin-mobile md:px-margin-desktop">
+<div class="max-w-[1440px] mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-xl mb-2xl">
+<!-- Col 1: About -->
+<div class="col-span-2 lg:col-span-1">
+<div class="mb-lg">
+<span class="font-headline-md text-primary block">Ticket Counter Ahmedabad</span>
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">Logistics &amp; Staffing</span>
+</div>
+<p class="text-body-md text-on-surface-variant mb-md pr-md">
+                    Ahmedabad's leading agency for premium event workforce and hospitality management since 2018.
+                </p>
+<div class="flex gap-md">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-[20px]">facebook</span></a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-[20px]">share</span></a>
+</div>
+</div>
+<!-- Col 2: Services -->
+<div>
+<h4 class="font-label-md text-on-surface mb-lg uppercase tracking-wider">Services</h4>
+<ul class="space-y-sm">
+<li><a class="text-on-surface-variant hover:text-secondary text-label-md transition-colors" href="#">Security Guards</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary text-label-md transition-colors" href="#">Event Bouncers</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary text-label-md transition-colors" href="#">Floor Supervisors</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary text-label-md transition-colors" href="#">Ground Staff</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary text-label-md transition-colors" href="#">Valet Services</a></li>
+</ul>
+</div>
+<!-- Col 3: Quick Links -->
+<div>
+<h4 class="font-label-md text-on-surface mb-lg uppercase tracking-wider">Quick Links</h4>
+<ul class="space-y-sm">
+<li><a class="text-on-surface-variant hover:text-secondary text-label-md transition-colors" href="#">About Us</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary text-label-md transition-colors" href="#">Join Our Team</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary text-label-md transition-colors" href="#">Hire Professionals</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary text-label-md transition-colors" href="#">Case Studies</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary text-label-md transition-colors" href="#">Contact Support</a></li>
+</ul>
+</div>
+<!-- Col 4: Resources -->
+<div>
+<h4 class="font-label-md text-on-surface mb-lg uppercase tracking-wider">Resources</h4>
+<ul class="space-y-sm">
+<li><a class="text-on-surface-variant hover:text-secondary text-label-md transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary text-label-md transition-colors" href="#">Terms of Service</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary text-label-md transition-colors" href="#">Staff FAQ</a></li>
+<li><a class="text-on-surface-variant hover:text-secondary text-label-md transition-colors" href="#">Admin Login</a></li>
+</ul>
+</div>
+<!-- Col 5: Contact Info -->
+<div class="col-span-2 lg:col-span-1">
+<h4 class="font-label-md text-on-surface mb-lg uppercase tracking-wider">Inquiries</h4>
+<div class="space-y-md">
+<div class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-primary">location_on</span>
+<span class="text-body-md text-on-surface-variant">Navrangpura, Ahmedabad,<br/>Gujarat 380009</span>
+</div>
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">mail</span>
+<a class="text-body-md text-on-surface-variant hover:text-primary" href="mailto:info@tca.com">info@tca.com</a>
+</div>
+</div>
+</div>
+</div>
+<div class="max-w-[1440px] mx-auto border-t border-outline-variant/10 pt-lg flex flex-col md:flex-row justify-between items-center gap-md">
+<p class="text-label-sm text-on-surface-variant opacity-60">
+                © 2024 Ticket Counter Ahmedabad. All rights reserved.
+            </p>
+<div class="flex items-center gap-lg">
+<span class="text-[10px] text-on-surface-variant opacity-60 flex items-center gap-xs italic">
+                    Designed for Excellence 
+                    <span class="material-symbols-outlined text-[10px] text-primary">star</span>
+</span>
+</div>
+</div>
+</footer>
+</body></html>

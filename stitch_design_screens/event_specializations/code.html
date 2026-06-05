@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ticket Counter Ahmedabad - Event Categories</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#494454",
+                        "error-container": "#93000a",
+                        "surface-container-low": "#151b2d",
+                        "secondary-fixed": "#acedff",
+                        "secondary-container": "#03b5d3",
+                        "on-tertiary-fixed-variant": "#92002a",
+                        "primary-container": "#a078ff",
+                        "on-error": "#690005",
+                        "on-tertiary-container": "#5b0017",
+                        "background": "#0c1324",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "error": "#ffb4ab",
+                        "inverse-surface": "#dce1fb",
+                        "inverse-primary": "#6d3bd7",
+                        "on-primary-container": "#340080",
+                        "inverse-on-surface": "#2a3043",
+                        "surface-container": "#191f31",
+                        "tertiary-fixed-dim": "#ffb2b7",
+                        "surface": "#0c1324",
+                        "on-secondary-fixed": "#001f26",
+                        "surface-container-lowest": "#070d1f",
+                        "surface-container-high": "#23293c",
+                        "on-background": "#dce1fb",
+                        "tertiary": "#ffb2b7",
+                        "primary": "#d0bcff",
+                        "surface-tint": "#d0bcff",
+                        "on-surface-variant": "#cbc3d7",
+                        "on-secondary-container": "#00424e",
+                        "on-error-container": "#ffdad6",
+                        "surface-variant": "#2e3447",
+                        "surface-dim": "#0c1324",
+                        "on-tertiary-fixed": "#40000d",
+                        "on-surface": "#dce1fb",
+                        "surface-container-highest": "#2e3447",
+                        "primary-fixed-dim": "#d0bcff",
+                        "on-tertiary": "#67001b",
+                        "on-secondary": "#003640",
+                        "secondary": "#4cd7f6",
+                        "primary-fixed": "#e9ddff",
+                        "on-primary-fixed-variant": "#5516be",
+                        "on-primary": "#3c0091",
+                        "tertiary-container": "#ff516a",
+                        "outline": "#958ea0",
+                        "on-primary-fixed": "#23005c",
+                        "tertiary-fixed": "#ffdadb",
+                        "surface-bright": "#33394c",
+                        "on-secondary-fixed-variant": "#004e5c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "48px",
+                        "xs": "4px",
+                        "2xl": "64px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "xl": "40px",
+                        "md": "16px",
+                        "base": "4px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "42px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { background-color: #0c1324; color: #dce1fb; overflow-x: hidden; }
+        .glass-card {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid #334155;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            transition: border-color 0.3s ease;
+        }
+        .glass-card:hover {
+            border-color: #d0bcff;
+        }
+        .primary-gradient-btn {
+            background: linear-gradient(135deg, #a078ff 0%, #03b5d3 100%);
+            color: #ffffff;
+            transition: all 0.3s ease;
+        }
+        .primary-gradient-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(160, 120, 255, 0.4);
+        }
+        .ghost-btn {
+            border: 1px solid #334155;
+            transition: all 0.3s ease;
+        }
+        .ghost-btn:hover {
+            border-color: #d0bcff;
+            box-shadow: 0 0 15px rgba(208, 188, 255, 0.2) inset;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased font-body-md text-body-md flex min-h-screen">
+<!-- NavigationDrawer (Hidden on mobile, visible on desktop) -->
+<nav class="hidden md:flex h-full w-80 rounded-r-xl border-r border-outline-variant/20 shadow-2xl flex flex-col gap-2 py-lg bg-surface-container-low/90 dark:bg-surface-container-low/90 backdrop-blur-2xl fixed left-0 top-0 z-40">
+<div class="px-lg pb-xl border-b border-outline-variant/10">
+<h2 class="font-headline-md text-headline-md text-primary">TCA Navigation</h2>
+</div>
+<div class="flex-1 overflow-y-auto pt-md flex flex-col gap-xs">
+<a class="flex items-center gap-md px-lg py-3 mx-sm rounded-xl text-on-surface-variant hover:bg-surface-variant/50 hover:pl-6 transition-all duration-300 cursor-pointer font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="home" data-weight="fill" style="font-variation-settings: 'FILL' 1;">home</span>
+                Home
+            </a>
+<a class="flex items-center gap-md px-lg py-3 mx-sm rounded-xl bg-primary/10 text-primary border-r-4 border-primary hover:pl-6 transition-all duration-300 cursor-pointer font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="settings_suggest" data-weight="fill" style="font-variation-settings: 'FILL' 1;">settings_suggest</span>
+                Services
+            </a>
+<a class="flex items-center gap-md px-lg py-3 mx-sm rounded-xl text-on-surface-variant hover:bg-surface-variant/50 hover:pl-6 transition-all duration-300 cursor-pointer font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="group_add" data-weight="fill" style="font-variation-settings: 'FILL' 1;">group_add</span>
+                Join Team
+            </a>
+<a class="flex items-center gap-md px-lg py-3 mx-sm rounded-xl text-on-surface-variant hover:bg-surface-variant/50 hover:pl-6 transition-all duration-300 cursor-pointer font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="person_add" data-weight="fill" style="font-variation-settings: 'FILL' 1;">person_add</span>
+                Hire Staff
+            </a>
+<a class="flex items-center gap-md px-lg py-3 mx-sm rounded-xl text-on-surface-variant hover:bg-surface-variant/50 hover:pl-6 transition-all duration-300 cursor-pointer font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="info" data-weight="fill" style="font-variation-settings: 'FILL' 1;">info</span>
+                About
+            </a>
+<a class="flex items-center gap-md px-lg py-3 mx-sm rounded-xl text-on-surface-variant hover:bg-surface-variant/50 hover:pl-6 transition-all duration-300 cursor-pointer font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="contact_support" data-weight="fill" style="font-variation-settings: 'FILL' 1;">contact_support</span>
+                Contact
+            </a>
+<a class="flex items-center gap-md px-lg py-3 mx-sm rounded-xl text-on-surface-variant hover:bg-surface-variant/50 hover:pl-6 transition-all duration-300 cursor-pointer font-label-md text-label-md mt-auto" href="#">
+<span class="material-symbols-outlined" data-icon="admin_panel_settings" data-weight="fill" style="font-variation-settings: 'FILL' 1;">admin_panel_settings</span>
+                Admin Login
+            </a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-80 flex flex-col min-h-screen relative">
+<!-- TopAppBar (Mobile Only) -->
+<header class="md:hidden fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30 shadow-sm flex justify-between items-center px-margin-mobile h-16">
+<button class="text-on-surface-variant hover:text-secondary transition-colors duration-300 active:scale-95">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md-mobile font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Ticket Counter Ahmedabad</h1>
+<button class="text-primary font-label-md text-label-md hover:text-secondary transition-colors duration-300 active:scale-95">
+                Hire Staff
+            </button>
+</header>
+<!-- Page Content -->
+<div class="pt-20 md:pt-12 px-margin-mobile md:px-margin-desktop pb-2xl flex-1 flex flex-col gap-2xl">
+<!-- Hero Section -->
+<section class="flex flex-col gap-lg items-start max-w-4xl">
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface">Premium Event <span class="text-primary">Categories</span></h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                    Elite staffing solutions tailored for every occasion. From high-energy concerts to elegant corporate gatherings, we provide specialized personnel to ensure flawless execution.
+                </p>
+</section>
+<!-- Bento Grid - Event Categories -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-lg auto-rows-[400px]">
+<!-- Wedding Management (Spans 8 cols) -->
+<article class="glass-card rounded-xl overflow-hidden md:col-span-8 flex flex-col md:flex-row group relative cursor-pointer group">
+<div class="w-full md:w-1/2 h-64 md:h-full bg-surface-container relative overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="An elegant, dimly lit wedding reception space bathed in soft purple and blue neon lighting. Crystal chandeliers cast delicate highlights over premium table settings. Professional staff in crisp dark suits are managing the event in the background, creating an atmosphere of exclusive luxury and meticulous organization." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAtdnS8yyIAyz6dQBDrbTheO64C4XPYDIWNfj0GQ_c3JDBYR4uI5CEJ0BbxXDRLqQnhMsKSfrsEN2kBkHwgDBr7xZlkuU2uTJOJ5V-Pr_B43YVlTxg1MhlrHXkopyLXQ6JpTk18yL9zs1bu5_zzeiCretILY_74SGYapOhenrdQIs-WPa38-EuGnvIrpv4l71thK197PlANGmmzFer1J7h30I1XMsgVmFZMxUnD3YOvEUxSzfKkuxF1ZXi8vCwBqm-HdKggtGlHh1ih');"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-background/80 to-transparent md:bg-gradient-to-t md:from-background/90 md:to-transparent"></div>
+</div>
+<div class="p-lg flex flex-col gap-md flex-1 z-10 relative">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="favorite">favorite</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Wedding Management</h3>
+</div>
+<p class="text-on-surface-variant font-body-md text-body-md flex-1">Impeccable service for your most important day. Our wedding staff blend seamlessly into the background while ensuring every detail is perfectly executed.</p>
+<div class="flex flex-wrap gap-sm mb-md">
+<span class="px-3 py-1 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm border border-primary/20">Ushers</span>
+<span class="px-3 py-1 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm border border-primary/20">Catering Staff</span>
+<span class="px-3 py-1 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm border border-primary/20">Valet</span>
+</div>
+<button class="primary-gradient-btn w-full md:w-auto self-start px-lg py-md rounded-lg font-label-md text-label-md flex items-center justify-center gap-sm">
+                            Hire Wedding Staff
+                            <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</article>
+<!-- Concert Operations (Spans 4 cols) -->
+<article class="glass-card rounded-xl overflow-hidden md:col-span-4 flex flex-col group relative cursor-pointer">
+<div class="h-48 bg-surface-container relative overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A dynamic perspective of a massive live concert stadium at night. The crowd is a sea of silhouettes against intense, electric cyan and deep violet stage lights cutting through atmospheric fog. Security personnel in high-visibility vests stand attentive at the barricades, projecting authority and safety amidst the high-energy environment." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCaB2horuGNHs0o_ad4lHrKClpPfTIUeS5V0X-FBVAkKRIuuQMAxLL39MNCbMH524R6qscGJeFtxGVdp-0oCcUbd3jxuUfHxR-bBch0pT_6aTCBdzPxl792LBp28lQzSFUjfo6mMWcNr3lV_QyLg9Ehi3MJghmGEOH5pVeIEwxd172ctXWsUG4I9wIdmwiz7_4kmgLtLi3OeDw5GKhDl-qJ0N4eTHY39AKEKR73P56F5YgZOq8SAM8-qq41sgHQwOKxIcvfQrJ717Je');"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+</div>
+<div class="p-lg flex flex-col gap-sm flex-1">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary" data-icon="music_note">music_note</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Concert Operations</h3>
+</div>
+<p class="text-on-surface-variant font-body-md text-body-md flex-1">High-volume crowd management and specialized security personnel.</p>
+<button class="ghost-btn w-full px-lg py-md rounded-lg font-label-md text-label-md flex items-center justify-center gap-sm text-on-surface mt-auto">
+                            View Requirements
+                        </button>
+</div>
+</article>
+<!-- Sports Event Staffing (Spans 5 cols) -->
+<article class="glass-card rounded-xl overflow-hidden md:col-span-5 flex flex-col group relative cursor-pointer">
+<div class="h-48 bg-surface-container relative overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A sleek, modern sports stadium arena illuminated by bright, cool-toned floodlights against a dark night sky. The focus is on the organized entry gates where professional event staff in uniform are efficiently scanning tickets and directing attendees. The aesthetic is clean, structured, and highly energetic, utilizing deep navy and cyan hues." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC7bKzE0uH50Sln8Fe8yL4kt5AEUaVdyw9AiRGiyY5lpvz92_pT3fFLxq48PQYJu6kZJtUwxMioDDbJ-sKmFoBITzrD6UNl64kVHt92XIR_14bey0Yc0sjmNunIjiRwVKL14qzrIoqGr-pRuNcwo8oT9hmsKuWkXuHV0rvN9vwWpJPdOvwcKLQgjpqgqCKDp2mvkwRyEaLGLbG-CGtlOg-f4DmP_X9JiGnv2XhtaqtG0rxUoLBSs4TuM0ieIgpDyOr1UML0C_7-PJEn');"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+</div>
+<div class="p-lg flex flex-col gap-sm flex-1">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-tertiary" data-icon="sports_soccer">sports_soccer</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Sports Events</h3>
+</div>
+<p class="text-on-surface-variant font-body-md text-body-md mb-md">Scalable staffing for stadiums and arenas, focusing on rapid deployment and safety.</p>
+<div class="flex flex-wrap gap-xs mb-md mt-auto">
+<span class="px-2 py-1 rounded-sm bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">Ticketing</span>
+<span class="px-2 py-1 rounded-sm bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">Crowd Control</span>
+</div>
+<button class="ghost-btn w-full px-lg py-md rounded-lg font-label-md text-label-md flex items-center justify-center gap-sm text-on-surface">
+                            Explore Sports Staff
+                        </button>
+</div>
+</article>
+<!-- Corporate Support (Spans 7 cols) -->
+<article class="glass-card rounded-xl overflow-hidden md:col-span-7 flex flex-col md:flex-row group relative cursor-pointer">
+<div class="w-full md:w-5/12 h-48 md:h-full bg-surface-container relative overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A sophisticated corporate tech conference taking place in a vast, minimalist auditorium. Attendees sit in darkened rows while a bright, cyan-tinted presentation screen glows in the background. Professional host staff in dark attire are discreetly guiding VIP guests, embodying a sleek, high-end corporate concierge aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDO_mLpo8RecSylpRgNYHrTt_9BRxUfOGTm5Ckc_rqngtsflZ_MeJIwE8ePzfjOtBs1dNF81ANjUDxKLefzx68KnNBRmvrPHcZo0EHHzLsgLxYKlj7QDdaFozTo0WHZZeDNJWVqGky7l7PNxC5PveX-8VKwal7evfJdUJEY-hqpq3m5pVVBV0n8RG5NCHF-xPXzNxof5TDYFfAHurm7R69C1Aw3VWHWEySDw_OIwmlOGmbAYzqfTvz-NoaV9aBgkFna3RTUJRuOIibR');"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-background/80 to-transparent md:bg-gradient-to-t md:from-background/90 md:to-transparent"></div>
+</div>
+<div class="p-lg flex flex-col gap-md flex-1 z-10 relative">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="business_center">business_center</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Corporate Support</h3>
+</div>
+<div class="h-2 w-2 rounded-full bg-secondary shadow-[0_0_8px_#4cd7f6] animate-pulse" title="High Demand"></div>
+</div>
+<p class="text-on-surface-variant font-body-md text-body-md flex-1">Executive-level professionalism for summits, galas, and product launches. Discretion and efficiency guaranteed.</p>
+<button class="primary-gradient-btn w-full md:w-auto self-end px-lg py-md rounded-lg font-label-md text-label-md flex items-center justify-center gap-sm mt-auto">
+                            Book Corporate Team
+                        </button>
+</div>
+</article>
+</section>
+</div>
+<!-- Footer -->
+<footer class="w-full bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-xl gap-lg mt-auto">
+<div class="font-headline-md text-headline-md text-primary">
+                Ticket Counter Ahmedabad
+            </div>
+<div class="font-body-md text-body-md text-secondary dark:text-secondary text-center md:text-left">
+                © 2024 Ticket Counter Ahmedabad. Premium Event Staffing Solutions.
+            </div>
+<div class="flex gap-lg font-body-md text-body-md">
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors" href="#">Contact Us</a>
+</div>
+</footer>
+</main>
+</body></html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About Us | Ticket Counter Ahmedabad</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#494454",
+                        "error-container": "#93000a",
+                        "surface-container-low": "#151b2d",
+                        "secondary-fixed": "#acedff",
+                        "secondary-container": "#03b5d3",
+                        "on-tertiary-fixed-variant": "#92002a",
+                        "primary-container": "#a078ff",
+                        "on-error": "#690005",
+                        "on-tertiary-container": "#5b0017",
+                        "background": "#0c1324",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "error": "#ffb4ab",
+                        "inverse-surface": "#dce1fb",
+                        "inverse-primary": "#6d3bd7",
+                        "on-primary-container": "#340080",
+                        "inverse-on-surface": "#2a3043",
+                        "surface-container": "#191f31",
+                        "tertiary-fixed-dim": "#ffb2b7",
+                        "surface": "#0c1324",
+                        "on-secondary-fixed": "#001f26",
+                        "surface-container-lowest": "#070d1f",
+                        "surface-container-high": "#23293c",
+                        "on-background": "#dce1fb",
+                        "tertiary": "#ffb2b7",
+                        "primary": "#d0bcff",
+                        "surface-tint": "#d0bcff",
+                        "on-surface-variant": "#cbc3d7",
+                        "on-secondary-container": "#00424e",
+                        "on-error-container": "#ffdad6",
+                        "surface-variant": "#2e3447",
+                        "surface-dim": "#0c1324",
+                        "on-tertiary-fixed": "#40000d",
+                        "on-surface": "#dce1fb",
+                        "surface-container-highest": "#2e3447",
+                        "primary-fixed-dim": "#d0bcff",
+                        "on-tertiary": "#67001b",
+                        "on-secondary": "#003640",
+                        "secondary": "#4cd7f6",
+                        "primary-fixed": "#e9ddff",
+                        "on-primary-fixed-variant": "#5516be",
+                        "on-primary": "#3c0091",
+                        "tertiary-container": "#ff516a",
+                        "outline": "#958ea0",
+                        "on-primary-fixed": "#23005c",
+                        "tertiary-fixed": "#ffdadb",
+                        "surface-bright": "#33394c",
+                        "on-secondary-fixed-variant": "#004e5c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "48px",
+                        "xs": "4px",
+                        "2xl": "64px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "xl": "40px",
+                        "md": "16px",
+                        "base": "4px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "42px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(51, 65, 85, 0.5);
+            box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.05);
+        }
+        .neon-glow {
+            text-shadow: 0 0 10px rgba(76, 215, 246, 0.5);
+        }
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, #d0bcff 0%, #4cd7f6 100%);
+        }
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 24px;
+            width: 2px;
+            background: linear-gradient(to bottom, #d0bcff, #4cd7f6);
+            opacity: 0.3;
+        }
+        @media (min-width: 768px) {
+            .timeline-line::before {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background antialiased min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="bg-surface/80 dark:bg-surface/80 backdrop-blur-xl fixed top-0 w-full z-50 border-b border-outline-variant/30 shadow-sm flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 w-full">
+<div class="flex items-center gap-md">
+<button class="md:hidden text-primary dark:text-primary active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md-mobile md:text-headline-md font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Ticket Counter Ahmedabad</h1>
+</div>
+<!-- Desktop Nav -->
+<nav class="hidden md:flex gap-lg items-center">
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-secondary transition-colors duration-300" href="#">Home</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-secondary transition-colors duration-300" href="#">Services</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-secondary transition-colors duration-300" href="#">Join Team</a>
+<a class="text-primary font-bold font-label-md text-label-md hover:text-secondary transition-colors duration-300" href="#">About</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-secondary transition-colors duration-300" href="#">Contact</a>
+</nav>
+<button class="hidden md:flex items-center gap-sm bg-gradient-primary text-on-primary font-label-md text-label-md px-md py-sm rounded-lg hover:opacity-90 transition-opacity active:scale-95">
+            Hire Staff
+        </button>
+</header>
+<!-- Mobile Navigation Drawer (Hidden by default, structure provided) -->
+<aside class="fixed inset-y-0 left-0 transform -translate-x-full md:hidden z-50 bg-surface-container-low/90 dark:bg-surface-container-low/90 backdrop-blur-2xl h-full w-80 rounded-r-xl border-r border-outline-variant/20 shadow-2xl flex flex-col gap-2 py-lg transition-transform duration-300 ease-in-out" id="mobile-nav">
+<div class="px-lg pb-md mb-md border-b border-outline-variant/10">
+<h2 class="font-headline-md text-headline-md text-primary">TCA Navigation</h2>
+</div>
+<nav class="flex flex-col gap-xs">
+<a class="flex items-center gap-md px-lg py-md text-on-surface-variant hover:bg-surface-variant/50 hover:pl-6 transition-all duration-300 cursor-pointer font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span> Home
+            </a>
+<a class="flex items-center gap-md px-lg py-md text-on-surface-variant hover:bg-surface-variant/50 hover:pl-6 transition-all duration-300 cursor-pointer font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="settings_suggest">settings_suggest</span> Services
+            </a>
+<a class="flex items-center gap-md px-lg py-md text-on-surface-variant hover:bg-surface-variant/50 hover:pl-6 transition-all duration-300 cursor-pointer font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="group_add">group_add</span> Join Team
+            </a>
+<a class="flex items-center gap-md px-lg py-md bg-primary/10 text-primary border-r-4 border-primary hover:pl-6 transition-all duration-300 cursor-pointer font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="info">info</span> About
+            </a>
+<a class="flex items-center gap-md px-lg py-md text-on-surface-variant hover:bg-surface-variant/50 hover:pl-6 transition-all duration-300 cursor-pointer font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span> Contact
+            </a>
+<div class="mt-auto px-lg pt-lg">
+<button class="w-full flex justify-center items-center gap-sm bg-gradient-primary text-on-primary font-label-md text-label-md px-md py-sm rounded-lg hover:opacity-90 transition-opacity active:scale-95">
+<span class="material-symbols-outlined" data-icon="person_add">person_add</span> Hire Staff
+                </button>
+</div>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-[80px] pb-2xl md:pb-[120px] px-margin-mobile md:px-margin-desktop w-full max-w-7xl mx-auto">
+<!-- Hero Section -->
+<section class="relative rounded-xl overflow-hidden mb-2xl min-h-[353px] flex items-center justify-center p-xl">
+<div class="absolute inset-0 z-0">
+<img alt="Corporate event crowd" class="w-full h-full object-cover opacity-30" data-alt="A massive, high-energy corporate event at night. The scene is illuminated by striking neon purple and cyan lighting, cutting through the deep, dark navy background. The atmosphere is electric and sophisticated, capturing the essence of premium event management and glassmorphism UI aesthetics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFwNSZWilasPAr13j_JvKVp5BYKL5MUw-7CdWZxZBS2QSjDAG1gF1QUPk9TK-r_38HrDISx7r2BBvKGygP268hnXKbsc5edelnLC_mz028CAVVElyEnpJquxdh_zbB-blbQezBME8w4S2GC6xeJwiR0rM5kWUCShne6HiOxdQPV3ztcAvcjLdWqj0xrON8kja0nHAtuJkBDYfaFWJVSzqMrG1Bg6U76fjVdQdKNL2SiQkKum4EXZTULtVtpKIPkH5YvBFsu5PYPaus"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent"></div>
+</div>
+<div class="relative z-10 text-center max-w-3xl mx-auto glass-panel p-xl rounded-xl">
+<h2 class="font-display-lg-mobile md:font-display-lg text-primary mb-md neon-glow">Elevating Event Experiences</h2>
+<p class="font-body-lg text-on-surface-variant">We are Ticket Counter Ahmedabad. A premium collective of event professionals dedicated to flawless execution and unforgettable atmospheres.</p>
+</div>
+</section>
+<!-- Mission & Vision Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-gutter mb-2xl">
+<!-- Mission -->
+<div class="glass-panel p-xl rounded-xl hover:border-primary transition-colors duration-300 relative overflow-hidden group">
+<div class="absolute -right-10 -top-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/20 transition-all duration-500"></div>
+<div class="flex items-center gap-sm mb-lg">
+<span class="material-symbols-outlined text-secondary text-[32px]" data-icon="track_changes" data-weight="fill" style="font-variation-settings: 'FILL' 1;">track_changes</span>
+<h3 class="font-headline-lg text-on-surface">Our Mission</h3>
+</div>
+<p class="font-body-md text-on-surface-variant">To provide unparalleled event staffing and logistical support, ensuring every detail is managed with elite precision. We empower event organizers to focus on the big picture while we flawlessly execute the ground reality.</p>
+</div>
+<!-- Vision -->
+<div class="glass-panel p-xl rounded-xl hover:border-secondary transition-colors duration-300 relative overflow-hidden group">
+<div class="absolute -left-10 -bottom-10 w-32 h-32 bg-secondary/10 rounded-full blur-3xl group-hover:bg-secondary/20 transition-all duration-500"></div>
+<div class="flex items-center gap-sm mb-lg">
+<span class="material-symbols-outlined text-primary text-[32px]" data-icon="visibility" data-weight="fill" style="font-variation-settings: 'FILL' 1;">visibility</span>
+<h3 class="font-headline-lg text-on-surface">Our Vision</h3>
+</div>
+<p class="font-body-md text-on-surface-variant">To be the undisputed standard for premium event management across the region, integrating cutting-edge technology with unmatched human expertise to redefine the live event experience.</p>
+</div>
+</section>
+<!-- Stats Section -->
+<section class="mb-2xl glass-panel rounded-xl p-lg md:p-xl flex flex-wrap justify-around gap-lg items-center relative overflow-hidden">
+<div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjIiIGZpbGw9IiMzMzQxNTUiIGZpbGwtb3BhY2l0eT0iMC4yIi8+PC9zdmc+')] opacity-20"></div>
+<div class="text-center z-10">
+<div class="font-display-lg text-primary neon-glow mb-xs">5+</div>
+<div class="font-label-md text-on-surface-variant uppercase tracking-widest">Years of Excellence</div>
+</div>
+<div class="hidden md:block w-px h-16 bg-outline-variant/50 z-10"></div>
+<div class="text-center z-10">
+<div class="font-display-lg text-secondary neon-glow mb-xs">1000+</div>
+<div class="font-label-md text-on-surface-variant uppercase tracking-widest">Events Managed</div>
+</div>
+<div class="hidden md:block w-px h-16 bg-outline-variant/50 z-10"></div>
+<div class="text-center z-10">
+<div class="font-display-lg text-primary neon-glow mb-xs">500+</div>
+<div class="font-label-md text-on-surface-variant uppercase tracking-widest">Elite Staff</div>
+</div>
+</section>
+<!-- Vertical Timeline -->
+<section class="max-w-4xl mx-auto relative timeline-line py-xl">
+<h3 class="font-headline-lg text-center text-on-surface mb-2xl relative z-10 bg-background inline-block px-lg mx-auto md:ml-auto md:mr-auto flex justify-center">The Journey</h3>
+<div class="space-y-xl relative z-10">
+<!-- 2019 -->
+<div class="relative flex flex-col md:flex-row items-start group">
+<div class="absolute left-[24px] md:left-1/2 w-4 h-4 rounded-full bg-primary -translate-x-1/2 mt-1.5 shadow-[0_0_10px_rgba(208,188,255,0.8)] border-2 border-background z-20"></div>
+<div class="pl-12 md:pl-0 md:w-1/2 md:pr-xl md:text-right">
+<h4 class="font-headline-md text-secondary mb-xs">2019</h4>
+<h5 class="font-label-md text-on-surface mb-sm">Inception</h5>
+<p class="font-body-md text-on-surface-variant">Founded with a core team of 5, aiming to organize local ticketing operations.</p>
+</div>
+</div>
+<!-- 2021 -->
+<div class="relative flex flex-col md:flex-row items-start group">
+<div class="absolute left-[24px] md:left-1/2 w-4 h-4 rounded-full bg-secondary -translate-x-1/2 mt-1.5 shadow-[0_0_10px_rgba(76,215,246,0.8)] border-2 border-background z-20"></div>
+<div class="pl-12 md:pl-0 md:w-1/2 md:ml-auto md:pl-xl">
+<h4 class="font-headline-md text-primary mb-xs">2021</h4>
+<h5 class="font-label-md text-on-surface mb-sm">Expansion</h5>
+<p class="font-body-md text-on-surface-variant">Grew our network to over 200 staff members, taking on regional music festivals.</p>
+</div>
+</div>
+<!-- 2023 -->
+<div class="relative flex flex-col md:flex-row items-start group">
+<div class="absolute left-[24px] md:left-1/2 w-4 h-4 rounded-full bg-primary -translate-x-1/2 mt-1.5 shadow-[0_0_10px_rgba(208,188,255,0.8)] border-2 border-background z-20"></div>
+<div class="pl-12 md:pl-0 md:w-1/2 md:pr-xl md:text-right">
+<h4 class="font-headline-md text-secondary mb-xs">2023</h4>
+<h5 class="font-label-md text-on-surface mb-sm">The 1000th Event</h5>
+<p class="font-body-md text-on-surface-variant">Successfully managed our 1000th corporate event, establishing TCA as an industry leader.</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest w-full border-t border-outline-variant/10 shadow-none flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-xl gap-lg mt-auto z-10 relative">
+<div class="font-headline-md text-headline-md text-primary">
+            Ticket Counter Ahmedabad
+        </div>
+<div class="text-on-surface-variant font-body-md text-body-md text-center md:text-left">
+            © 2024 Ticket Counter Ahmedabad. Premium Event Staffing Solutions.
+        </div>
+<div class="flex gap-md">
+<a class="text-on-surface-variant font-body-md text-body-md hover:text-secondary transition-colors" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant font-body-md text-body-md hover:text-secondary transition-colors" href="#">Terms of Service</a>
+<a class="text-on-surface-variant font-body-md text-body-md hover:text-secondary transition-colors" href="#">Contact Us</a>
+</div>
+</footer>
+<script>
+        // Simple script for mobile menu toggle if needed
+        document.querySelector('[data-icon="menu"]').parentElement.addEventListener('click', () => {
+            const nav = document.getElementById('mobile-nav');
+            if (nav.classList.contains('-translate-x-full')) {
+                nav.classList.remove('-translate-x-full');
+            } else {
+                nav.classList.add('-translate-x-full');
+            }
+        });
+    </script>
+</body></html>

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hire Staff - Ticket Counter Ahmedabad</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "outline-variant": "#494454",
+                        "error-container": "#93000a",
+                        "surface-container-low": "#151b2d",
+                        "secondary-fixed": "#acedff",
+                        "secondary-container": "#03b5d3",
+                        "on-tertiary-fixed-variant": "#92002a",
+                        "primary-container": "#a078ff",
+                        "on-error": "#690005",
+                        "on-tertiary-container": "#5b0017",
+                        "background": "#030712",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "error": "#ffb4ab",
+                        "inverse-surface": "#dce1fb",
+                        "inverse-primary": "#6d3bd7",
+                        "on-primary-container": "#340080",
+                        "inverse-on-surface": "#2a3043",
+                        "surface-container": "#111827",
+                        "tertiary-fixed-dim": "#ffb2b7",
+                        "surface": "#030712",
+                        "on-secondary-fixed": "#001f26",
+                        "surface-container-lowest": "#010409",
+                        "surface-container-high": "#1f2937",
+                        "on-background": "#f3f4f6",
+                        "tertiary": "#ffb2b7",
+                        "primary": "#d0bcff",
+                        "surface-tint": "#d0bcff",
+                        "on-surface-variant": "#9ca3af",
+                        "on-secondary-container": "#00424e",
+                        "on-error-container": "#ffdad6",
+                        "surface-variant": "#1f2937",
+                        "surface-dim": "#030712",
+                        "on-tertiary-fixed": "#40000d",
+                        "on-surface": "#f3f4f6",
+                        "surface-container-highest": "#374151",
+                        "primary-fixed-dim": "#d0bcff",
+                        "on-tertiary": "#67001b",
+                        "on-secondary": "#003640",
+                        "secondary": "#4cd7f6",
+                        "primary-fixed": "#e9ddff",
+                        "on-primary-fixed-variant": "#5516be",
+                        "on-primary": "#3c0091",
+                        "tertiary-container": "#ff516a",
+                        "outline": "#6b7280",
+                        "on-primary-fixed": "#23005c",
+                        "tertiary-fixed": "#ffdadb",
+                        "surface-bright": "#1f2937",
+                        "on-secondary-fixed-variant": "#004e5c"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "margin-desktop": "48px",
+                        "xs": "4px",
+                        "2xl": "64px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "xl": "40px",
+                        "md": "16px",
+                        "base": "4px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px"
+                    },
+                    fontFamily: {
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    fontSize: {
+                        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.01em", fontWeight: "600" }],
+                        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+                        "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "700" }],
+                        "display-lg-mobile": ["36px", { lineHeight: "42px", letterSpacing: "-0.02em", fontWeight: "800" }],
+                        "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+                        "label-sm": ["12px", { lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "500" }],
+                        "display-lg": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "800" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #030712; color: #f3f4f6; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .glass-panel {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .header-glass {
+            background: rgba(3, 7, 18, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .input-glow:focus {
+            border-color: #4cd7f6;
+            box-shadow: 0 0 12px 2px rgba(76, 215, 246, 0.2);
+            outline: none;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #d0bcff 0%, #4cd7f6 100%);
+            color: #030712;
+        }
+        .btn-primary:hover {
+            opacity: 0.95;
+            transform: translateY(-1px);
+        }
+        .btn-whatsapp { background-color: #25D366; color: white; }
+        .btn-call { background-color: #3b82f6; color: white; }
+        
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .material-symbols-outlined.fill { font-variation-settings: 'FILL' 1; }
+
+        input, select, textarea {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col relative selection:bg-primary/30">
+<!-- Header -->
+<header class="fixed top-0 w-full z-[100] header-glass h-20 flex items-center">
+<div class="container mx-auto px-margin-mobile md:px-margin-desktop flex justify-between items-center">
+<div class="flex items-center gap-md">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-3xl">confirmation_number</span>
+<h1 class="font-bold text-xl md:text-2xl tracking-tight text-white">Ticket Counter Ahmedabad</h1>
+</div>
+<span class="text-[10px] md:text-xs text-on-surface-variant uppercase tracking-[0.2em] font-medium ml-9">Premium Event Staffing</span>
+</div>
+</div>
+<nav class="hidden lg:flex items-center gap-xl">
+<a class="text-sm font-semibold text-on-surface-variant hover:text-white transition-colors" href="#">Home</a>
+<a class="text-sm font-semibold text-on-surface-variant hover:text-white transition-colors" href="#">Services</a>
+<a class="text-sm font-semibold text-primary" href="#">Hire Staff</a>
+<a class="text-sm font-semibold text-on-surface-variant hover:text-white transition-colors" href="#">Careers</a>
+<a class="text-sm font-semibold text-on-surface-variant hover:text-white transition-colors" href="#">About</a>
+</nav>
+<div class="flex items-center gap-sm md:gap-md">
+<a class="hidden sm:flex items-center justify-center p-sm rounded-full bg-white/5 hover:bg-white/10 transition-colors" href="tel:+910000000000">
+<span class="material-symbols-outlined text-white text-xl">call</span>
+</a>
+<a class="hidden sm:flex items-center justify-center p-sm rounded-full bg-white/5 hover:bg-white/10 transition-colors" href="https://wa.me/910000000000">
+<span class="material-symbols-outlined text-white text-xl">chat</span>
+</a>
+<button class="flex items-center gap-sm px-lg py-sm rounded-full btn-primary font-label-md text-label-md active:scale-95 transition-all shadow-lg shadow-primary/10">
+<span>Hire Staff</span>
+</button>
+<button class="lg:hidden flex items-center justify-center p-sm rounded-full text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-[120px] pb-2xl px-margin-mobile md:px-margin-desktop relative z-10 w-full max-w-7xl mx-auto flex flex-col items-center">
+<!-- Hero Info -->
+<div class="w-full text-center max-w-3xl mb-16">
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg mb-md text-white">Secure Elite Event Staff.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Deploy highly trained, professional personnel for your next premium event. Fill out your requirements, and our digital concierge will orchestrate the perfect team.</p>
+</div>
+<div class="w-full flex flex-col lg:flex-row gap-xl items-start">
+<!-- Left Side: Features -->
+<div class="w-full lg:w-5/12 flex flex-col gap-lg lg:sticky lg:top-32">
+<div class="grid grid-cols-1 gap-md">
+<div class="p-lg rounded-2xl glass-panel border-white/5 hover:border-primary/30 transition-all group">
+<div class="flex items-start gap-md">
+<div class="p-md rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-background transition-all">
+<span class="material-symbols-outlined fill text-2xl">verified_user</span>
+</div>
+<div>
+<h3 class="font-headline-md text-xl text-white mb-1">Vetted Professionals</h3>
+<p class="text-on-surface-variant leading-relaxed">Every staff member undergoes rigorous background checks and high-end hospitality training.</p>
+</div>
+</div>
+</div>
+<div class="p-lg rounded-2xl glass-panel border-white/5 hover:border-secondary/30 transition-all group">
+<div class="flex items-start gap-md">
+<div class="p-md rounded-xl bg-secondary/10 text-secondary group-hover:bg-secondary group-hover:text-background transition-all">
+<span class="material-symbols-outlined fill text-2xl">speed</span>
+</div>
+<div>
+<h3 class="font-headline-md text-xl text-white mb-1">Rapid Deployment</h3>
+<p class="text-on-surface-variant leading-relaxed">Our intelligent system can mobilize local talent within 24 hours for urgent needs.</p>
+</div>
+</div>
+</div>
+<div class="p-lg rounded-2xl glass-panel border-white/5 hover:border-tertiary/30 transition-all group">
+<div class="flex items-start gap-md">
+<div class="p-md rounded-xl bg-tertiary/10 text-tertiary group-hover:bg-tertiary group-hover:text-background transition-all">
+<span class="material-symbols-outlined fill text-2xl">support_agent</span>
+</div>
+<div>
+<h3 class="font-headline-md text-xl text-white mb-1">Dedicated Concierge</h3>
+<p class="text-on-surface-variant leading-relaxed">An event manager will oversee the staffing logistics from start to finish.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Side: The Form -->
+<div class="w-full lg:w-7/12 glass-panel rounded-2xl p-lg md:p-xl border-white/10 shadow-2xl relative overflow-hidden">
+<!-- Decorative Glow -->
+<div class="absolute -top-32 -right-32 w-80 h-80 bg-primary/20 rounded-full blur-[100px] pointer-events-none"></div>
+<div class="absolute -bottom-32 -left-32 w-80 h-80 bg-secondary/20 rounded-full blur-[100px] pointer-events-none"></div>
+<h2 class="relative z-10 text-2xl font-bold text-white mb-lg flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">assignment</span>
+                Staffing Requirement Form
+            </h2>
+<form class="relative z-10 flex flex-col gap-lg">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-xs text-on-surface-variant uppercase tracking-widest" for="companyName">Company Name</label>
+<input class="bg-surface-container/50 border border-white/10 rounded-xl px-md py-sm font-body-md text-on-surface input-glow" id="companyName" placeholder="Enter company name" type="text"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-xs text-on-surface-variant uppercase tracking-widest" for="contactPerson">Contact Person</label>
+<input class="bg-surface-container/50 border border-white/10 rounded-xl px-md py-sm font-body-md text-on-surface input-glow" id="contactPerson" placeholder="Full name" type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-xs text-on-surface-variant uppercase tracking-widest" for="mobile">Mobile Number</label>
+<input class="bg-surface-container/50 border border-white/10 rounded-xl px-md py-sm font-body-md text-on-surface input-glow" id="mobile" placeholder="+91 00000 00000" type="tel"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-xs text-on-surface-variant uppercase tracking-widest" for="email">Email Address</label>
+<input class="bg-surface-container/50 border border-white/10 rounded-xl px-md py-sm font-body-md text-on-surface input-glow" id="email" placeholder="name@company.com" type="email"/>
+</div>
+</div>
+<div class="border-t border-white/5 pt-lg"></div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-xs text-on-surface-variant uppercase tracking-widest" for="eventName">Event Name</label>
+<input class="bg-surface-container/50 border border-white/10 rounded-xl px-md py-sm font-body-md text-on-surface input-glow" id="eventName" placeholder="e.g., Annual Tech Summit 2024" type="text"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-xs text-on-surface-variant uppercase tracking-widest" for="eventDate">Event Date</label>
+<input class="bg-surface-container/50 border border-white/10 rounded-xl px-md py-sm font-body-md text-on-surface input-glow [color-scheme:dark]" id="eventDate" type="date"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-xs text-on-surface-variant uppercase tracking-widest" for="eventLocation">Location/Venue</label>
+<input class="bg-surface-container/50 border border-white/10 rounded-xl px-md py-sm font-body-md text-on-surface input-glow" id="eventLocation" placeholder="City or Venue Name" type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-xs text-on-surface-variant uppercase tracking-widest" for="staffCount">Staff Count</label>
+<input class="bg-surface-container/50 border border-white/10 rounded-xl px-md py-sm font-body-md text-on-surface input-glow" id="staffCount" min="1" placeholder="0" type="number"/>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-xs text-on-surface-variant uppercase tracking-widest" for="staffCategory">Category</label>
+<select class="bg-surface-container/50 border border-white/10 rounded-xl px-md py-sm font-body-md text-on-surface input-glow appearance-none cursor-pointer" id="staffCategory">
+<option disabled="" selected="" value="">Select staff type...</option>
+<option value="security">Security Personnel</option>
+<option value="ushers">Ushers &amp; Greeters</option>
+<option value="bartenders">Mixologists &amp; Bartenders</option>
+<option value="servers">Waitstaff &amp; Servers</option>
+<option value="management">Event Managers</option>
+</select>
+</div>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-sm text-xs text-on-surface-variant uppercase tracking-widest" for="details">Additional Requirements</label>
+<textarea class="bg-surface-container/50 border border-white/10 rounded-xl px-md py-sm font-body-md text-on-surface input-glow resize-none" id="details" placeholder="Specific skills, uniforms, or logistics..." rows="4"></textarea>
+</div>
+<div class="mt-md flex flex-col md:flex-row items-center justify-between gap-md">
+<p class="font-label-sm text-xs text-on-surface-variant/70 text-center md:text-left">By submitting, you agree to our Terms of Service and Privacy Policy.</p>
+<button class="w-full md:w-auto btn-primary px-xl py-4 rounded-xl font-bold flex items-center justify-center gap-sm shadow-xl shadow-primary/20 hover:shadow-primary/40 active:scale-[0.98]" type="button">
+<span>Submit Requirement</span>
+<span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+</main>
+<!-- Floating Elements -->
+<div class="fixed bottom-lg right-lg flex flex-col gap-sm z-[90]">
+<a class="w-12 h-12 flex items-center justify-center rounded-full bg-white/10 border border-white/10 text-white backdrop-blur-md hover:bg-white/20 transition-all shadow-xl" href="#" title="Back to Top">
+<span class="material-symbols-outlined">arrow_upward</span>
+</a>
+<a class="w-12 h-12 flex items-center justify-center rounded-full btn-call shadow-xl hover:scale-110 transition-transform" href="tel:+910000000000" title="Call Now">
+<span class="material-symbols-outlined fill">call</span>
+</a>
+<a class="w-12 h-12 flex items-center justify-center rounded-full btn-whatsapp shadow-xl hover:scale-110 transition-transform" href="https://wa.me/910000000000" title="WhatsApp Us">
+<span class="material-symbols-outlined fill">chat</span>
+</a>
+</div>
+<!-- 5-Column Footer -->
+<footer class="bg-surface-container-lowest border-t border-white/5 pt-2xl pb-lg px-margin-mobile md:px-margin-desktop z-20 relative">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-xl mb-2xl">
+<!-- Col 1: Brand -->
+<div class="col-span-2 md:col-span-3 lg:col-span-1">
+<div class="flex items-center gap-2 mb-md">
+<span class="material-symbols-outlined text-primary">confirmation_number</span>
+<span class="font-bold text-lg text-white">Ticket Counter</span>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed mb-md">Premium event staffing and management solutions in Ahmedabad. Elevating experiences since 2018.</p>
+<div class="flex gap-md">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-xl">facebook</span></a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-xl">camera</span></a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined text-xl">alternate_email</span></a>
+</div>
+</div>
+<!-- Col 2: Services -->
+<div>
+<h4 class="font-bold text-white mb-lg text-sm uppercase tracking-widest">Services</h4>
+<ul class="flex flex-col gap-sm">
+<li><a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Event Security</a></li>
+<li><a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Hospitality Staff</a></li>
+<li><a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Corporate Ushers</a></li>
+<li><a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Bouncers &amp; Guarding</a></li>
+</ul>
+</div>
+<!-- Col 3: Company -->
+<div>
+<h4 class="font-bold text-white mb-lg text-sm uppercase tracking-widest">Company</h4>
+<ul class="flex flex-col gap-sm">
+<li><a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">About Us</a></li>
+<li><a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Our Team</a></li>
+<li><a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Careers</a></li>
+<li><a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Press Kit</a></li>
+</ul>
+</div>
+<!-- Col 4: Support -->
+<div>
+<h4 class="font-bold text-white mb-lg text-sm uppercase tracking-widest">Support</h4>
+<ul class="flex flex-col gap-sm">
+<li><a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Help Center</a></li>
+<li><a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Terms of Service</a></li>
+<li><a class="text-sm text-on-surface-variant hover:text-primary transition-colors" href="#">Cookie Policy</a></li>
+</ul>
+</div>
+<!-- Col 5: Contact -->
+<div class="col-span-2 md:col-span-1 lg:col-span-1">
+<h4 class="font-bold text-white mb-lg text-sm uppercase tracking-widest">Connect</h4>
+<ul class="flex flex-col gap-sm">
+<li class="flex items-center gap-sm text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-xs">call</span>
+                        +91 98765 43210
+                    </li>
+<li class="flex items-center gap-sm text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-xs">mail</span>
+                        hello@ticketcounter.in
+                    </li>
+<li class="flex items-center gap-sm text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-xs">location_on</span>
+                        Ahmedabad, Gujarat
+                    </li>
+</ul>
+</div>
+</div>
+<div class="border-t border-white/5 pt-lg flex flex-col md:flex-row justify-between items-center gap-md">
+<p class="text-xs text-on-surface-variant">© 2024 Ticket Counter Ahmedabad. All rights reserved.</p>
+<p class="text-xs text-on-surface-variant/50">Designed for excellence.</p>
+</div>
+</div>
+</footer>
+</body></html>

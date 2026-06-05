@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Services - Ticket Counter Ahmedabad</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#494454",
+                        "error-container": "#93000a",
+                        "surface-container-low": "#151b2d",
+                        "secondary-fixed": "#acedff",
+                        "secondary-container": "#03b5d3",
+                        "on-tertiary-fixed-variant": "#92002a",
+                        "primary-container": "#a078ff",
+                        "on-error": "#690005",
+                        "on-tertiary-container": "#5b0017",
+                        "background": "#0c1324",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "error": "#ffb4ab",
+                        "inverse-surface": "#dce1fb",
+                        "inverse-primary": "#6d3bd7",
+                        "on-primary-container": "#340080",
+                        "inverse-on-surface": "#2a3043",
+                        "surface-container": "#191f31",
+                        "tertiary-fixed-dim": "#ffb2b7",
+                        "surface": "#0c1324",
+                        "on-secondary-fixed": "#001f26",
+                        "surface-container-lowest": "#070d1f",
+                        "surface-container-high": "#23293c",
+                        "on-background": "#dce1fb",
+                        "tertiary": "#ffb2b7",
+                        "primary": "#d0bcff",
+                        "surface-tint": "#d0bcff",
+                        "on-surface-variant": "#cbc3d7",
+                        "on-secondary-container": "#00424e",
+                        "on-error-container": "#ffdad6",
+                        "surface-variant": "#2e3447",
+                        "surface-dim": "#0c1324",
+                        "on-tertiary-fixed": "#40000d",
+                        "on-surface": "#dce1fb",
+                        "surface-container-highest": "#2e3447",
+                        "primary-fixed-dim": "#d0bcff",
+                        "on-tertiary": "#67001b",
+                        "on-secondary": "#003640",
+                        "secondary": "#4cd7f6",
+                        "primary-fixed": "#e9ddff",
+                        "on-primary-fixed-variant": "#5516be",
+                        "on-primary": "#3c0091",
+                        "tertiary-container": "#ff516a",
+                        "outline": "#958ea0",
+                        "on-primary-fixed": "#23005c",
+                        "tertiary-fixed": "#ffdadb",
+                        "surface-bright": "#33394c",
+                        "on-secondary-fixed-variant": "#004e5c"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "48px",
+                        "xs": "4px",
+                        "2xl": "64px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "xl": "40px",
+                        "md": "16px",
+                        "base": "4px",
+                        "margin-mobile": "16px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "42px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom Glass & Glow Utilities */
+        .glass-card {
+            background-color: rgba(15, 23, 42, 0.8); /* Semi-transparent Navy Level 1 */
+            backdrop-filter: blur(12px);
+            border: 1px solid #334155;
+            box-shadow: inset 1px 1px 0px 0px rgba(255, 255, 255, 0.05); /* Inner light leak */
+        }
+        .glass-card:hover {
+            border-color: theme('colors.primary');
+        }
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col md:flex-row antialiased overflow-x-hidden selection:bg-primary/30 selection:text-primary">
+<!-- Mobile TopAppBar (Hidden on md+) -->
+<header class="md:hidden fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30 shadow-sm flex justify-between items-center px-margin-mobile h-16 transition-transform">
+<div class="flex items-center gap-sm">
+<button aria-label="Menu" class="text-on-surface-variant active:scale-95 transition-transform">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<span class="font-headline-md text-headline-md-mobile font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+                Ticket Counter Ahmedabad
+            </span>
+</div>
+<button class="font-label-md text-label-md text-primary font-bold active:scale-95 transition-transform hover:text-secondary transition-colors duration-300">
+            Hire Staff
+        </button>
+</header>
+<!-- Desktop NavigationDrawer (Hidden on mobile) -->
+<nav class="hidden md:flex flex-col gap-2 py-lg bg-surface-container-low/90 dark:bg-surface-container-low/90 backdrop-blur-2xl h-full w-80 rounded-r-xl border-r border-outline-variant/20 shadow-2xl fixed left-0 top-0 z-40 overflow-y-auto">
+<div class="px-lg mb-lg">
+<span class="font-headline-md text-headline-md text-primary font-bold">
+                TCA Navigation
+            </span>
+</div>
+<ul class="flex flex-col w-full">
+<!-- Home -->
+<li>
+<a class="flex items-center gap-md px-lg py-md font-label-md text-label-md text-on-surface-variant hover:bg-surface-variant/50 hover:pl-6 transition-all duration-300 cursor-pointer" href="#">
+<span class="material-symbols-outlined">home</span>
+                    Home
+                </a>
+</li>
+<!-- Services (ACTIVE) -->
+<li>
+<a class="flex items-center gap-md px-lg py-md font-label-md text-label-md bg-primary/10 text-primary border-r-4 border-primary hover:pl-6 transition-all duration-300 cursor-pointer" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings_suggest</span>
+                    Services
+                </a>
+</li>
+<!-- Join Team -->
+<li>
+<a class="flex items-center gap-md px-lg py-md font-label-md text-label-md text-on-surface-variant hover:bg-surface-variant/50 hover:pl-6 transition-all duration-300 cursor-pointer" href="#">
+<span class="material-symbols-outlined">group_add</span>
+                    Join Team
+                </a>
+</li>
+<!-- Hire Staff -->
+<li>
+<a class="flex items-center gap-md px-lg py-md font-label-md text-label-md text-on-surface-variant hover:bg-surface-variant/50 hover:pl-6 transition-all duration-300 cursor-pointer" href="#">
+<span class="material-symbols-outlined">person_add</span>
+                    Hire Staff
+                </a>
+</li>
+<!-- About -->
+<li>
+<a class="flex items-center gap-md px-lg py-md font-label-md text-label-md text-on-surface-variant hover:bg-surface-variant/50 hover:pl-6 transition-all duration-300 cursor-pointer" href="#">
+<span class="material-symbols-outlined">info</span>
+                    About
+                </a>
+</li>
+<!-- Contact -->
+<li>
+<a class="flex items-center gap-md px-lg py-md font-label-md text-label-md text-on-surface-variant hover:bg-surface-variant/50 hover:pl-6 transition-all duration-300 cursor-pointer" href="#">
+<span class="material-symbols-outlined">contact_support</span>
+                    Contact
+                </a>
+</li>
+<!-- Admin Login -->
+<li class="mt-auto pt-lg border-t border-outline-variant/10">
+<a class="flex items-center gap-md px-lg py-md font-label-md text-label-md text-on-surface-variant hover:bg-surface-variant/50 hover:pl-6 transition-all duration-300 cursor-pointer" href="#">
+<span class="material-symbols-outlined">admin_panel_settings</span>
+                    Admin Login
+                </a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col min-h-screen pt-16 md:pt-0 md:ml-80 relative z-0">
+<!-- Subtle Ambient Background Glow -->
+<div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+<div class="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary/5 rounded-full blur-[150px] pointer-events-none -z-10"></div>
+<!-- Page Content -->
+<div class="flex-1 px-margin-mobile md:px-margin-desktop py-xl">
+<!-- Hero Header -->
+<header class="mb-2xl max-w-3xl">
+<div class="inline-flex items-center gap-sm px-md py-sm rounded-full bg-primary/10 border border-primary/20 mb-md">
+<span class="material-symbols-outlined text-secondary text-sm">workspace_premium</span>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest">Premium Catalog</span>
+</div>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-background mb-md">
+                    Elite Event Staffing <br/> <span class="bg-gradient-to-r from-primary to-secondary text-gradient">Solutions.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                    Deploy highly-trained professionals for your next high-profile event. From impenetrable security details to flawless ground operations, our VIP digital concierge ensures controlled excitement and absolute reliability.
+                </p>
+</header>
+<!-- Services Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-lg lg:gap-xl">
+<!-- Card 1: Security Guards -->
+<article class="glass-card rounded-xl flex flex-col overflow-hidden transition-all duration-500 group">
+<div class="relative h-64 w-full overflow-hidden">
+<img alt="Security Guards" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="A professional, sharp-looking security guard standing confidently in a dimly lit, high-end event venue. The lighting is dramatic, with cool blue and subtle purple neon highlights reflecting off their neat, dark uniform. The background features blurred silhouettes of partygoers and sophisticated architectural elements, emphasizing a secure, exclusive, and high-energy nightlife atmosphere. The overall mood is authoritative yet sleek and modern." src="https://lh3.googleusercontent.com/aida-public/AB6AXuApWKMHXmK2VApxU3SiHuvQK3g5CDjEhhNY78B_uelUknWYtRzS9PV0ytQGmdGWOVH2QjkVxgNSC_gqdz6JsjuyiQ4dLGQS7boyVzbOYhIja3eZUpmnWw_uH8VASVWkYGEBFs-D2C-lk5e4OHLBdSAidck2fa5AQw_0kTOqCprJkmBSD9_Ml7sIKqBSMcrP7pCBgwKsBjkB3zQPxZ4LsTYm3XYeijL0N4WB8X_w4xxmjxSagQojulxAUyNCzcH4QuBS-n4FetfiJpsP"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-transparent to-transparent"></div>
+<div class="absolute top-md right-md bg-background/60 backdrop-blur-md border border-outline-variant/30 px-sm py-xs rounded-lg flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-on-background">Live Available</span>
+</div>
+</div>
+<div class="p-lg flex flex-col flex-1">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-sm flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">security</span>
+                            Security Guards
+                        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg flex-1">
+                            Highly trained professionals ensuring comprehensive perimeter control and asset protection for large-scale corporate and private events.
+                        </p>
+<ul class="flex flex-col gap-sm mb-xl">
+<li class="flex items-start gap-sm font-label-md text-label-md text-on-background">
+<span class="material-symbols-outlined text-secondary text-base">check_circle</span>
+                                Crowd control &amp; perimeter defense
+                            </li>
+<li class="flex items-start gap-sm font-label-md text-label-md text-on-background">
+<span class="material-symbols-outlined text-secondary text-base">check_circle</span>
+                                Emergency response certified
+                            </li>
+<li class="flex items-start gap-sm font-label-md text-label-md text-on-background">
+<span class="material-symbols-outlined text-secondary text-base">check_circle</span>
+                                VIP escort capabilities
+                            </li>
+</ul>
+<button class="w-full py-md rounded-lg bg-gradient-to-r from-primary to-secondary text-[#ffffff] font-label-md text-label-md hover:shadow-[0_0_20px_rgba(160,120,255,0.4)] transition-all duration-300">
+                            Book Now
+                        </button>
+</div>
+</article>
+<!-- Card 2: Bouncers -->
+<article class="glass-card rounded-xl flex flex-col overflow-hidden transition-all duration-500 group">
+<div class="relative h-64 w-full overflow-hidden">
+<img alt="Bouncers" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="A massive, imposing bouncer with a stoic expression managing the entrance of an elite VIP club. He is dressed in a crisp black suit with a discreet earpiece. The setting is nocturnal, illuminated by sophisticated exterior uplighting and a subtle, pulsing cyan neon sign out of focus in the background. The aesthetic conveys impenetrable security, exclusivity, and premium event management in a modern, glass-heavy architectural environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqtDjLI9y7eJdww5zw7BYg-akPz1MgJfb6Ducnka57igzABBvHhbQeuLrRSIvjaa9mnDQdGg6hApM63vdY7VsuT4pRYWvOXxP06u0Qp4IMegxGqD912CE2ufw4R0s8s6IxOFMxrvRsX4taK6kv0dubjCm3tbajIfC1Sxy_heZ6-_4uVOMky3VxHwpyWgCshlggg83ab5BysGbXBVaEwSEuvb7KRo89VYgZpeYyRhKnpV7n3tMiG9UtuiGy19x4HkjTpfNfF848xy0m"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-transparent to-transparent"></div>
+</div>
+<div class="p-lg flex flex-col flex-1">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-sm flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">gavel</span>
+                            Bouncers
+                        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg flex-1">
+                            Imposing, articulate, and discreet. Our bouncers provide strict access control and conflict de-escalation for premium nightlife and exclusive venues.
+                        </p>
+<ul class="flex flex-col gap-sm mb-xl">
+<li class="flex items-start gap-sm font-label-md text-label-md text-on-background">
+<span class="material-symbols-outlined text-secondary text-base">check_circle</span>
+                                Strict guestlist enforcement
+                            </li>
+<li class="flex items-start gap-sm font-label-md text-label-md text-on-background">
+<span class="material-symbols-outlined text-secondary text-base">check_circle</span>
+                                Covert communication protocols
+                            </li>
+<li class="flex items-start gap-sm font-label-md text-label-md text-on-background">
+<span class="material-symbols-outlined text-secondary text-base">check_circle</span>
+                                Rapid de-escalation tactics
+                            </li>
+</ul>
+<button class="w-full py-md rounded-lg bg-gradient-to-r from-primary to-secondary text-[#ffffff] font-label-md text-label-md hover:shadow-[0_0_20px_rgba(160,120,255,0.4)] transition-all duration-300">
+                            Book Now
+                        </button>
+</div>
+</article>
+<!-- Card 3: Supervisors -->
+<article class="glass-card rounded-xl flex flex-col overflow-hidden transition-all duration-500 group">
+<div class="relative h-64 w-full overflow-hidden">
+<img alt="Supervisors" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="An experienced event supervisor holding a glowing digital tablet, coordinating logistics in the bustling backstage area of a large-scale concert. The environment is dark and industrial but lit by sharp, high-tech LED screens and stage lights casting a mix of deep navy and vibrant purple hues. They look focused and professional, representing highly organized, reliable corporate structure amidst the vibrant pulse of live entertainment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiS62SNFWMHAo6YO6FK95uCzmkQuTqxRaLHalRcVolEPKdbT5a7qppRpBTTHGSXkZopbU3fEbSkPy1OT9mprbKP_OeVgn5os2GGcvf_4gH4hj46hG41p8D7EJ6xRxqQIGaggUwG4LVj9RS8IPPVY3pyTBQ_pfs8NBh5XFESdurgKQo2zpWPPTHJOBBplo1MHghrJ9Ws7aAv8ivwuSoQDi1UUifJ4j6lBpvdWhse2F2dNzd7YqMk8_MpwzG1EWrGPbn8UCWnHkHfKxG"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-transparent to-transparent"></div>
+</div>
+<div class="p-lg flex flex-col flex-1">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-sm flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">manage_accounts</span>
+                            Supervisors
+                        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg flex-1">
+                            Strategic leaders who orchestrate ground teams, ensuring seamless communication and execution of your event's operational blueprint.
+                        </p>
+<ul class="flex flex-col gap-sm mb-xl">
+<li class="flex items-start gap-sm font-label-md text-label-md text-on-background">
+<span class="material-symbols-outlined text-secondary text-base">check_circle</span>
+                                Real-time logistical coordination
+                            </li>
+<li class="flex items-start gap-sm font-label-md text-label-md text-on-background">
+<span class="material-symbols-outlined text-secondary text-base">check_circle</span>
+                                Staff deployment &amp; management
+                            </li>
+<li class="flex items-start gap-sm font-label-md text-label-md text-on-background">
+<span class="material-symbols-outlined text-secondary text-base">check_circle</span>
+                                Incident reporting &amp; compliance
+                            </li>
+</ul>
+<button class="w-full py-md rounded-lg bg-transparent border border-outline-variant hover:border-primary text-primary font-label-md text-label-md hover:bg-primary/5 transition-all duration-300">
+                            Book Now
+                        </button>
+</div>
+</article>
+<!-- Card 4: Ground Staff -->
+<article class="glass-card rounded-xl flex flex-col overflow-hidden transition-all duration-500 group">
+<div class="relative h-64 w-full overflow-hidden">
+<img alt="Ground Staff" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" data-alt="A team of energetic, neatly uniformed ground staff efficiently managing guest flow and services at a luxury nighttime gala. They are working near a glowing, glassmorphism-styled registration desk. The lighting is elegant, featuring low-key atmospheric illumination with sharp, controlled highlights that emphasize cleanliness and organization. The scene feels like a VIP digital concierge service brought to life, characterized by smooth motion and sophisticated energy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_NW9OkFuWxETX4V0hBoH3oxhXKvkjvLFeNcekztbYBo6KkWMmQXC5KUetYy2NllmfwVpwK0w-d2GPJbO_mSCOaGqmbaV1_AFFeRQBOImL5T3jeWQvMWV3obtdW03MRtvYx2VIfFntbxx2raUZpeLlQzJHyRYFwlw1ghJuh2J66yTL5L7jF5U4MJiU7FYWak1ET2cTdX4xx_N3lZZwS14QZjPaz8zlEdZhx34yymUOZHi4de_JBK_0DnXAlpwor0bwORx8UMlfRrjo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#0F172A] via-transparent to-transparent"></div>
+</div>
+<div class="p-lg flex flex-col flex-1">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-sm flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">groups</span>
+                            Ground Staff
+                        </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg flex-1">
+                            The backbone of event hospitality. Courteous, efficient personnel handling registration, ushering, and general guest assistance.
+                        </p>
+<ul class="flex flex-col gap-sm mb-xl">
+<li class="flex items-start gap-sm font-label-md text-label-md text-on-background">
+<span class="material-symbols-outlined text-secondary text-base">check_circle</span>
+                                Seamless guest registration
+                            </li>
+<li class="flex items-start gap-sm font-label-md text-label-md text-on-background">
+<span class="material-symbols-outlined text-secondary text-base">check_circle</span>
+                                VIP concierge services
+                            </li>
+<li class="flex items-start gap-sm font-label-md text-label-md text-on-background">
+<span class="material-symbols-outlined text-secondary text-base">check_circle</span>
+                                Venue navigation &amp; ushering
+                            </li>
+</ul>
+<button class="w-full py-md rounded-lg bg-transparent border border-outline-variant hover:border-primary text-primary font-label-md text-label-md hover:bg-primary/5 transition-all duration-300">
+                            Book Now
+                        </button>
+</div>
+</article>
+</div>
+</div>
+<!-- Shared Component: Footer -->
+<footer class="w-full bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center px-margin-mobile md:px-margin-desktop py-xl gap-lg mt-auto z-10">
+<div class="flex flex-col items-center md:items-start gap-sm">
+<span class="font-headline-md text-headline-md text-primary">
+                    Ticket Counter Ahmedabad
+                </span>
+<p class="font-body-md text-body-md text-on-surface-variant text-center md:text-left">
+                    © 2024 Ticket Counter Ahmedabad. Premium Event Staffing Solutions.
+                </p>
+</div>
+<nav>
+<ul class="flex flex-wrap justify-center gap-md md:gap-lg">
+<li>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors cursor-pointer" href="#">
+                            Privacy Policy
+                        </a>
+</li>
+<li>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors cursor-pointer" href="#">
+                            Terms of Service
+                        </a>
+</li>
+<li>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-secondary transition-colors cursor-pointer" href="#">
+                            Contact Us
+                        </a>
+</li>
+</ul>
+</nav>
+</footer>
+</main>
+</body></html>
