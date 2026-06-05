@@ -13,156 +13,115 @@ if (!global.mockDatabase) {
   global.mockDatabase = {
     users: [
       {
-        _id: 'user_employer_1',
-        email: 'employer@crewconnect.com',
-        passwordHash,
-        role: 'employer',
-        fullName: 'John Planners (Elite Weddings)',
-        mobileNumber: '+91 98765 43210',
-        createdAt: new Date()
-      },
-      {
-        _id: 'user_worker_1',
-        email: 'worker@crewconnect.com',
-        passwordHash,
-        role: 'worker',
-        fullName: 'Rahul Sharma (VIP Staff)',
-        mobileNumber: '+91 99999 88888',
-        createdAt: new Date()
-      },
-      {
         _id: 'user_admin_1',
         email: 'admin@crewconnect.com',
         passwordHash,
         role: 'admin',
-        fullName: 'CrewConnect Admin System',
+        fullName: 'System Admin',
         mobileNumber: '+91 90000 11111',
         createdAt: new Date()
       },
       {
-        _id: 'user_superadmin_1',
-        email: 'superadmin@crewconnect.com',
+        _id: 'user_staff_1',
+        email: 'staff@crewconnect.com',
         passwordHash,
-        role: 'superadmin',
-        fullName: 'System Super Admin',
-        mobileNumber: '+91 99999 00000',
+        role: 'staff',
+        fullName: 'Rahul Sharma',
+        mobileNumber: '+91 99999 88888',
         createdAt: new Date()
       },
       {
-        _id: 'user_manager_1',
-        email: 'manager@crewconnect.com',
+        _id: 'user_staff_2',
+        email: 'staff2@crewconnect.com',
         passwordHash,
-        role: 'staff_manager',
-        fullName: 'Staff Manager (Operations)',
+        role: 'staff',
+        fullName: 'Amit Patel',
         mobileNumber: '+91 98888 77777',
         createdAt: new Date()
-      }
-    ],
-    workerProfiles: [
-      {
-        _id: 'profile_worker_1',
-        userId: 'user_worker_1',
-        bio: 'Polished front-desk coordinator and billing supervisor with 4+ years of wedding hospitality experience.',
-        experienceYears: '4',
-        skills: ['Reception', 'Billing', 'Guest Relations', 'Fluent English', 'QR Ticketing'],
-        rating: 4.9,
-        completedJobsCount: 14,
-        isVerified: true,
-        prevEvents: ['MEB Energy Summit 2025', 'Ultra Luxe Wedding Ahmedabad 2026']
-      }
-    ],
-    jobs: [
-      {
-        _id: 'job_1',
-        title: 'VIP Banquet Hostess / Coordinator',
-        description: 'We need 5 polished, bilingual hostesses for checking in high-profile VIP guests at a luxury wedding reception. Black business formal dress required.',
-        category: 'hospitality',
-        clientType: 'Wedding Planner',
-        location: 'Taj Skyline, Ahmedabad',
-        date: '2026-06-15',
-        durationHours: 8,
-        payRatePerHour: 300,
-        slots: 5,
-        filledSlots: 1,
-        status: 'open',
-        createdBy: 'user_employer_1',
-        createdAt: new Date()
       },
       {
-        _id: 'job_2',
-        title: 'Bouncer / VIP Security Crew',
-        description: 'Elite bouncer deployment for concert crowd security and green room protection. Must be physically fit (min height 6ft) with black security polo dress code.',
-        category: 'security',
-        clientType: 'Event Company',
-        location: 'Karnavati Club, SG Highway',
-        date: '2026-06-18',
-        durationHours: 6,
-        payRatePerHour: 400,
-        slots: 8,
-        filledSlots: 0,
-        status: 'open',
-        createdBy: 'user_employer_1',
-        createdAt: new Date()
-      },
-      {
-        _id: 'job_3',
-        title: 'Staging & AV Light Setup Technicians',
-        description: 'Stage lighting setup technicians needed for overnight corporate stage assembly. Electrician certification or sound engineering background preferred.',
-        category: 'technical',
-        clientType: 'Corporate',
-        location: 'Exhibition Centre, Gandhinagar',
-        date: '2026-06-20',
-        durationHours: 10,
-        payRatePerHour: 350,
-        slots: 3,
-        filledSlots: 0,
-        status: 'open',
-        createdBy: 'user_employer_1',
-        createdAt: new Date()
-      }
-    ],
-    applications: [
-      {
-        _id: 'app_1',
-        jobId: 'job_1',
-        workerId: 'user_worker_1',
-        status: 'applied',
-        appliedAt: new Date()
-      }
-    ],
-    employerInquiries: [
-      {
-        _id: 'inq_1',
-        companyName: 'Corporate Gala Inc.',
-        contactPerson: 'Siddharth Mehta',
-        mobileNumber: '+91 95555 12345',
-        email: 'sid@corporategala.com',
-        eventName: 'Annual Tech Summit 2026',
-        eventDate: '2026-07-10',
-        eventLocation: 'Exhibition Hall, Ahmedabad',
-        staffCount: 15,
-        staffCategory: 'Hospitality',
-        details: 'Need hosts for reception registrations desk.',
-        status: 'Pending',
-        createdAt: new Date()
-      }
-    ],
-    jobSeekers: [
-      {
-        _id: 'seeker_1',
-        fullName: 'Amit Patel',
+        _id: 'user_staff_3',
+        email: 'staff3@crewconnect.com',
+        passwordHash,
+        role: 'staff',
+        fullName: 'Pooja Shah',
         mobileNumber: '+91 97777 55555',
-        email: 'amit@gmail.com',
-        dob: '2001-08-12',
-        gender: 'Male',
-        experience: 'Experienced',
-        experienceYears: '2',
-        position: 'Hospitality Usher',
-        status: 'Applied',
         createdAt: new Date()
       }
-    ]
+    ],
+    events: [
+      {
+        _id: 'event_1',
+        name: 'Royal Wedding Reception Gala',
+        date: '2026-06-15',
+        time: '18:00',
+        location: 'Taj Skyline, Ahmedabad',
+        category: 'Wedding Staff',
+        assignedStaff: [
+          {
+            _id: 'assign_1',
+            staffName: 'Rahul Sharma',
+            category: 'Wedding Staff',
+            mobileNumber: '+91 99999 88888',
+            userId: 'user_staff_1'
+          }
+        ],
+        createdAt: new Date()
+      },
+      {
+        _id: 'event_2',
+        name: 'International Tech Summit 2026',
+        date: '2026-06-18',
+        time: '09:00',
+        location: 'Exhibition Centre, Gandhinagar',
+        category: 'Hospitality Staff',
+        assignedStaff: [
+          {
+            _id: 'assign_2',
+            staffName: 'Amit Patel',
+            category: 'Hospitality Staff',
+            mobileNumber: '+91 98888 77777',
+            userId: 'user_staff_2',
+            checkInTime: new Date('2026-06-05T09:05:00Z'),
+            checkInLocation: '23.0225, 72.5714',
+            checkInSelfie: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5CYII='
+          }
+        ],
+        createdAt: new Date()
+      },
+      {
+        _id: 'event_3',
+        name: 'Annual Corporate Awards Night',
+        date: '2026-06-01',
+        time: '19:00',
+        location: 'Karnavati Club, SG Highway',
+        category: 'Security Staff',
+        assignedStaff: [
+          {
+            _id: 'assign_3',
+            staffName: 'Pooja Shah',
+            category: 'Security Staff',
+            mobileNumber: '+91 97777 55555',
+            userId: 'user_staff_3',
+            checkInTime: new Date('2026-06-01T18:45:00Z'),
+            checkInLocation: '23.0225, 72.5714',
+            checkInSelfie: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5CYII=',
+            checkOutTime: new Date('2026-06-02T02:15:00Z'),
+            checkOutLocation: '23.0226, 72.5715',
+            checkOutSelfie: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5CYII='
+          }
+        ],
+        createdAt: new Date()
+      }
+    ],
+    // Legacy placeholders to prevent failures in unmodified code
+    jobs: [],
+    applications: [],
+    employerInquiries: [],
+    jobSeekers: [],
+    workerProfiles: []
   };
 }
 
 export const mockDb = global.mockDatabase;
+export const useMockDb = global.useMockDb;

@@ -3,13 +3,13 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { Menu, X, Briefcase, Users, PhoneCall, Info, LayoutDashboard, Shield, Sparkles, LogOut, LogIn, ClipboardList, UserCheck } from 'lucide-react';
+import { Menu, X, Shield, LogOut, LogIn, Calendar, Users, PhoneCall, Info } from 'lucide-react';
 import './globals.css';
 
 interface UserSession {
   id: string;
   email: string;
-  role: 'employer' | 'worker' | 'admin' | 'superadmin' | 'staff_manager';
+  role: 'admin' | 'staff';
   fullName: string;
 }
 
@@ -57,8 +57,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        <title>CrewConnect | Find Trusted Event & Hospitality Staff in Minutes</title>
-        <meta name="description" content="CrewConnect connects top event managers, caterers, hotels, and corporate planners with verified, high-performance hospitality and logistical staff." />
+        <title>CrewConnect | Event Staff Deployment &amp; Attendance Platform</title>
+        <meta name="description" content="Deploy professional event staff across hospitality, security, and logistics. Monitor attendance in real-time with selfie verification and GPS geolocation." />
       </head>
       <body className="flex flex-col min-h-screen text-slate-900 bg-slate-50 antialiased font-inter">
         {/* Top Navbar */}
@@ -67,7 +67,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="flex items-center gap-4">
               <button
                 onClick={() => setDrawerOpen(true)}
-                className="lg:hidden text-primary hover:text-white p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50"
+                className="lg:hidden text-primary hover:text-white p-2 rounded-lg focus:outline-none"
                 aria-label="Open menu"
               >
                 <Menu className="w-6 h-6" />
@@ -78,7 +78,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   ⚡ <span className="text-primary">Crew</span>Connect
                 </span>
                 <span className="text-[8px] md:text-[9px] text-slate-400 font-bold tracking-widest uppercase">
-                  Event & Hospitality Staffing
+                  Staff Deployment &amp; Attendance
                 </span>
               </Link>
             </div>
@@ -86,46 +86,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-6">
               <Link href="/" className={`text-sm font-semibold hover:text-primary transition-colors ${pathname === '/' ? 'text-primary' : 'text-slate-300'}`}>Home</Link>
-              
-              {/* Common Roles Pages */}
               <Link href="/services" className={`text-sm font-semibold hover:text-primary transition-colors ${pathname === '/services' ? 'text-primary' : 'text-slate-300'}`}>Services</Link>
-              
-              {/* Worker specific links */}
-              {user?.role === 'worker' && (
-                <>
-                  <Link href="/jobs" className={`text-sm font-semibold hover:text-primary transition-colors ${pathname === '/jobs' ? 'text-primary' : 'text-slate-300'}`}>Browse Jobs</Link>
-                  <Link href="/dashboard/worker" className={`text-sm font-semibold hover:text-primary transition-colors ${pathname.startsWith('/dashboard') ? 'text-primary' : 'text-slate-300'}`}>Worker Dashboard</Link>
-                </>
-              )}
-
-              {/* Employer specific links */}
-              {user?.role === 'employer' && (
-                <>
-                  <Link href="/jobs" className={`text-sm font-semibold hover:text-primary transition-colors ${pathname === '/jobs' ? 'text-primary' : 'text-slate-300'}`}>All Jobs</Link>
-                  <Link href="/dashboard/employer" className={`text-sm font-semibold hover:text-primary transition-colors ${pathname.startsWith('/dashboard') ? 'text-primary' : 'text-slate-300'}`}>Employer Dashboard</Link>
-                </>
-              )}
-
-              {/* Admin / Manager specific links */}
-              {(user?.role === 'admin' || user?.role === 'superadmin' || user?.role === 'staff_manager') && (
-                <>
-                  <Link href="/jobs" className={`text-sm font-semibold hover:text-primary transition-colors ${pathname === '/jobs' ? 'text-primary' : 'text-slate-300'}`}>Manage Jobs</Link>
-                  <Link href="/admin" className={`text-sm font-semibold hover:text-primary transition-colors flex items-center gap-1 ${pathname === '/admin' ? 'text-primary' : 'text-slate-400'}`}>
-                    <Shield className="w-3.5 h-3.5" /> Admin Panel
-                  </Link>
-                </>
-              )}
-
-              {/* Guest links */}
-              {!user && (
-                <>
-                  <Link href="/hire" className={`text-sm font-semibold hover:text-primary transition-colors ${pathname === '/hire' ? 'text-primary' : 'text-slate-300'}`}>Request Staff</Link>
-                  <Link href="/join" className={`text-sm font-semibold hover:text-primary transition-colors ${pathname === '/join' ? 'text-primary' : 'text-slate-300'}`}>Careers</Link>
-                  <Link href="/join-team-registration" className={`text-sm font-semibold hover:text-primary transition-colors ${pathname === '/join-team-registration' ? 'text-primary' : 'text-slate-300'}`}>Register</Link>
-                </>
-              )}
-
               <Link href="/contact" className={`text-sm font-semibold hover:text-primary transition-colors ${pathname === '/contact' ? 'text-primary' : 'text-slate-300'}`}>Contact</Link>
+
+              {/* Active Admin links */}
+              {user?.role === 'admin' && (
+                <Link href="/admin" className={`text-sm font-semibold hover:text-primary transition-colors flex items-center gap-1 ${pathname === '/admin' ? 'text-primary' : 'text-slate-400'}`}>
+                  <Shield className="w-3.5 h-3.5" /> Admin Portal
+                </Link>
+              )}
+
+              {/* Active Staff links */}
+              {user?.role === 'staff' && (
+                <Link href="/dashboard/staff" className={`text-sm font-semibold hover:text-primary transition-colors flex items-center gap-1 ${pathname.startsWith('/dashboard') ? 'text-primary' : 'text-slate-400'}`}>
+                  <Calendar className="w-3.5 h-3.5" /> My Deployments
+                </Link>
+              )}
             </nav>
 
             <div className="flex items-center gap-4">
@@ -133,8 +109,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <div className="w-8 h-8 rounded-full border-2 border-primary border-t-transparent animate-spin" />
               ) : user ? (
                 <div className="flex items-center gap-3">
-                  <span className="hidden md:inline-block text-xs font-bold text-slate-300">
-                    Hi, <span className="text-primary">{user.fullName.split(' ')[0]}</span> ({user.role})
+                  <span className="hidden md:inline-block text-xs font-bold text-slate-350">
+                    Logged in as: <span className="text-primary">{user.fullName}</span> ({user.role})
                   </span>
                   <button 
                     onClick={handleLogout}
@@ -146,13 +122,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               ) : (
                 <div className="flex items-center gap-2">
                   <Link href="/login">
-                    <button className="text-slate-300 hover:text-white font-bold text-xs md:text-sm px-3 py-2 rounded-lg transition-colors flex items-center gap-1">
-                      <LogIn className="w-3.5 h-3.5 text-primary" /> Sign In
-                    </button>
-                  </Link>
-                  <Link href="/register">
-                    <button className="bg-primary hover:bg-primary-hover text-white font-bold text-xs md:text-sm px-4 py-2.5 rounded-lg active:scale-95 transition-all shadow-md shadow-primary/15 flex items-center gap-1">
-                      <Sparkles className="w-3.5 h-3.5" /> Join Free
+                    <button className="bg-primary hover:bg-primary-hover text-white font-bold text-xs md:text-sm px-5 py-2.5 rounded-lg active:scale-95 transition-all shadow-md shadow-primary/15 flex items-center gap-1">
+                      <LogIn className="w-3.5 h-3.5" /> Portal Sign In
                     </button>
                   </Link>
                 </div>
@@ -188,113 +159,48 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               onClick={() => setDrawerOpen(false)} 
               className="flex items-center gap-4 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-900 hover:text-white transition-all text-sm font-semibold"
             >
-              <Briefcase className="w-4 h-4 text-primary" /> Home
+              Home
             </Link>
-            
             <Link 
               href="/services" 
               onClick={() => setDrawerOpen(false)} 
               className="flex items-center gap-4 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-900 hover:text-white transition-all text-sm font-semibold"
             >
-              <ClipboardList className="w-4 h-4 text-primary" /> Services
+              Services
             </Link>
-
-            {/* Auth Dependent Routes */}
-            {user?.role === 'worker' && (
-              <>
-                <Link 
-                  href="/jobs" 
-                  onClick={() => setDrawerOpen(false)} 
-                  className="flex items-center gap-4 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-900 hover:text-white transition-all text-sm font-semibold"
-                >
-                  <Briefcase className="w-4 h-4 text-primary" /> Browse Jobs
-                </Link>
-                <Link 
-                  href="/dashboard/worker" 
-                  onClick={() => setDrawerOpen(false)} 
-                  className="flex items-center gap-4 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-900 hover:text-white transition-all text-sm font-semibold"
-                >
-                  <LayoutDashboard className="w-4 h-4 text-primary" /> Worker Dashboard
-                </Link>
-              </>
-            )}
-
-            {user?.role === 'employer' && (
-              <>
-                <Link 
-                  href="/jobs" 
-                  onClick={() => setDrawerOpen(false)} 
-                  className="flex items-center gap-4 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-900 hover:text-white transition-all text-sm font-semibold"
-                >
-                  <Briefcase className="w-4 h-4 text-primary" /> All Jobs
-                </Link>
-                <Link 
-                  href="/dashboard/employer" 
-                  onClick={() => setDrawerOpen(false)} 
-                  className="flex items-center gap-4 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-900 hover:text-white transition-all text-sm font-semibold"
-                >
-                  <LayoutDashboard className="w-4 h-4 text-primary" /> Employer Dashboard
-                </Link>
-              </>
-            )}
-
-            {(user?.role === 'admin' || user?.role === 'superadmin' || user?.role === 'staff_manager') && (
-              <>
-                <Link 
-                  href="/jobs" 
-                  onClick={() => setDrawerOpen(false)} 
-                  className="flex items-center gap-4 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-900 hover:text-white transition-all text-sm font-semibold"
-                >
-                  <Briefcase className="w-4 h-4 text-primary" /> Manage Jobs
-                </Link>
-                <Link 
-                  href="/admin" 
-                  onClick={() => setDrawerOpen(false)} 
-                  className="flex items-center gap-4 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-900 hover:text-white transition-all text-sm font-semibold"
-                >
-                  <Shield className="w-4 h-4 text-primary" /> Admin Portal
-                </Link>
-              </>
-            )}
-
-            {!user && (
-              <>
-                <Link 
-                  href="/hire" 
-                  onClick={() => setDrawerOpen(false)} 
-                  className="flex items-center gap-4 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-900 hover:text-white transition-all text-sm font-semibold"
-                >
-                  <UserCheck className="w-4 h-4 text-primary" /> Request Staff
-                </Link>
-                <Link 
-                  href="/join" 
-                  onClick={() => setDrawerOpen(false)} 
-                  className="flex items-center gap-4 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-900 hover:text-white transition-all text-sm font-semibold"
-                >
-                  <Users className="w-4 h-4 text-primary" /> Careers
-                </Link>
-                <Link 
-                  href="/join-team-registration" 
-                  onClick={() => setDrawerOpen(false)} 
-                  className="flex items-center gap-4 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-900 hover:text-white transition-all text-sm font-semibold"
-                >
-                  <Sparkles className="w-4 h-4 text-primary" /> Register as Crew
-                </Link>
-              </>
-            )}
-
             <Link 
               href="/contact" 
               onClick={() => setDrawerOpen(false)} 
               className="flex items-center gap-4 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-900 hover:text-white transition-all text-sm font-semibold"
             >
-              <PhoneCall className="w-4 h-4 text-primary" /> Contact
+              Contact
             </Link>
-            
+
+            {/* Auth Dependent Routes */}
+            {user?.role === 'admin' && (
+              <Link 
+                href="/admin" 
+                onClick={() => setDrawerOpen(false)} 
+                className="flex items-center gap-4 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-900 hover:text-white transition-all text-sm font-semibold"
+              >
+                <Shield className="w-4 h-4 text-primary" /> Admin Portal
+              </Link>
+            )}
+
+            {user?.role === 'staff' && (
+              <Link 
+                href="/dashboard/staff" 
+                onClick={() => setDrawerOpen(false)} 
+                className="flex items-center gap-4 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-900 hover:text-white transition-all text-sm font-semibold"
+              >
+                <Calendar className="w-4 h-4 text-primary" /> My Deployments
+              </Link>
+            )}
+
             {user && (
               <button 
                 onClick={() => { setDrawerOpen(false); handleLogout(); }}
-                className="flex w-full items-center gap-4 px-4 py-3 rounded-lg text-slate-400 hover:bg-red-950/30 hover:text-red-400 transition-all text-sm font-semibold border-t border-slate-900 mt-auto"
+                className="flex w-full items-center gap-4 px-4 py-3 rounded-lg text-slate-450 hover:bg-red-950/30 hover:text-red-400 transition-all text-sm font-semibold border-t border-slate-900 mt-auto"
               >
                 <LogOut className="w-4 h-4" /> Logout
               </button>
@@ -308,49 +214,42 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </main>
 
         {/* Footer */}
-        <footer className="w-full bg-slate-950 text-white flex flex-col px-4 md:px-8 py-8 md:py-12 border-t border-slate-900">
-          <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-4 gap-8">
+        <footer className="w-full bg-slate-950 text-white flex flex-col px-4 md:px-8 py-8 md:py-12 border-t border-slate-900 mt-auto">
+          <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="space-y-4">
               <div className="font-poppins text-xl font-bold tracking-tight text-white">
                 ⚡ <span className="text-primary">Crew</span>Connect
               </div>
               <p className="text-slate-450 text-xs md:text-sm leading-relaxed max-w-sm">
-                National hospitality and event staffing marketplace. Connecting caterers, wedding planners, hotels, and corporate events with screened, trained, and verified manpower instantly.
+                Event Staff Deployment &amp; Attendance Management Platform. Restructured layout serving luxury weddings, corporate hospitality, private security, logistics, and AV technical manpower.
               </p>
             </div>
             
             <div>
-              <h4 className="font-poppins font-bold text-sm text-primary uppercase tracking-widest mb-4">For Employers</h4>
+              <h4 className="font-poppins font-bold text-sm text-primary uppercase tracking-widest mb-4">Verticals</h4>
               <ul className="space-y-2 text-xs md:text-sm text-slate-400">
-                <li><Link href="/hire" className="hover:text-primary transition-colors">Request Staff</Link></li>
-                <li><Link href="/login" className="hover:text-primary transition-colors">Post a Job</Link></li>
-                <li><Link href="/services" className="hover:text-primary transition-colors">Staffing Solutions</Link></li>
+                <li>Wedding Staff</li>
+                <li>Hospitality Staff</li>
+                <li>Security Staff</li>
+                <li>Technical Staff</li>
+                <li>Logistics Staff</li>
               </ul>
             </div>
 
             <div>
-              <h4 className="font-poppins font-bold text-sm text-primary uppercase tracking-widest mb-4">For Staff</h4>
+              <h4 className="font-poppins font-bold text-sm text-primary uppercase tracking-widest mb-4">Contact &amp; Support</h4>
               <ul className="space-y-2 text-xs md:text-sm text-slate-400">
-                <li><Link href="/join" className="hover:text-primary transition-colors">Careers Page</Link></li>
-                <li><Link href="/join-team-registration" className="hover:text-primary transition-colors">Crew Registration</Link></li>
-                <li><Link href="/login" className="hover:text-primary transition-colors">Find Shifts</Link></li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-poppins font-bold text-sm text-primary uppercase tracking-widest mb-4">Company</h4>
-              <ul className="space-y-2 text-xs md:text-sm text-slate-400">
-                <li><Link href="/contact" className="hover:text-primary transition-colors">Contact Support</Link></li>
-                <li><Link href="/services" className="hover:text-primary transition-colors">Services Catalog</Link></li>
-                <li><span className="text-slate-500">Privacy & Terms</span></li>
+                <li><Link href="/contact" className="hover:text-primary transition-colors">Contact Support Desk</Link></li>
+                <li><Link href="/services" className="hover:text-primary transition-colors font-bold">Services Catalog</Link></li>
+                <li><span className="text-slate-500">System Telemetry Online</span></li>
               </ul>
             </div>
           </div>
           
           <div className="max-w-7xl mx-auto w-full flex flex-col md:flex-row justify-between items-center mt-8 pt-6 border-t border-slate-900 text-xs text-slate-400 gap-4">
             <p>© 2026 CrewConnect Ltd. All rights reserved.</p>
-            <p className="flex items-center gap-1">
-              Safety, Reliability, Professionalism <span className="text-primary">★</span>
+            <p className="flex items-center gap-1 font-bold text-[10px] uppercase tracking-wider">
+              Selfie &amp; GPS Verification Active <span className="text-primary">★</span>
             </p>
           </div>
         </footer>

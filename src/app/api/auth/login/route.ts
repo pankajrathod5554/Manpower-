@@ -2,47 +2,40 @@ import { NextResponse } from 'next/server';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import dbConnect from '@/lib/db';
-import { User, WorkerProfile } from '@/lib/models';
+import { User } from '@/lib/models';
 
 const JWT_SECRET = process.env.JWT_SECRET || 'crewconnect_secret_key';
 
-// Helper to seed demo users if they don't exist
+// Helper to seed demo users for Admin and Staff roles if they don't exist
 async function ensureDemoUsers() {
   const demoUsers = [
     {
-      email: 'employer@crewconnect.com',
-      password: 'password123',
-      fullName: 'John Planners (Elite Weddings)',
-      mobileNumber: '+91 98765 43210',
-      role: 'employer'
-    },
-    {
-      email: 'worker@crewconnect.com',
-      password: 'password123',
-      fullName: 'Rahul Sharma (VIP Staff)',
-      mobileNumber: '+91 99999 88888',
-      role: 'worker'
-    },
-    {
       email: 'admin@crewconnect.com',
       password: 'password123',
-      fullName: 'CrewConnect Admin System',
+      fullName: 'System Admin',
       mobileNumber: '+91 90000 11111',
       role: 'admin'
     },
     {
-      email: 'superadmin@crewconnect.com',
+      email: 'staff@crewconnect.com',
       password: 'password123',
-      fullName: 'System Super Admin',
-      mobileNumber: '+91 99999 00000',
-      role: 'superadmin'
+      fullName: 'Rahul Sharma',
+      mobileNumber: '+91 99999 88888',
+      role: 'staff'
     },
     {
-      email: 'manager@crewconnect.com',
+      email: 'staff2@crewconnect.com',
       password: 'password123',
-      fullName: 'Staff Manager (Operations)',
+      fullName: 'Amit Patel',
       mobileNumber: '+91 98888 77777',
-      role: 'staff_manager'
+      role: 'staff'
+    },
+    {
+      email: 'staff3@crewconnect.com',
+      password: 'password123',
+      fullName: 'Pooja Shah',
+      mobileNumber: '+91 97777 55555',
+      role: 'staff'
     }
   ];
 
@@ -51,26 +44,13 @@ async function ensureDemoUsers() {
     if (!exists) {
       const salt = await bcrypt.genSalt(10);
       const passwordHash = await bcrypt.hash(demo.password, salt);
-      const created = await User.create({
+      await User.create({
         email: demo.email,
         passwordHash,
         role: demo.role,
         fullName: demo.fullName,
         mobileNumber: demo.mobileNumber
       });
-
-      if (demo.role === 'worker') {
-        await WorkerProfile.create({
-          userId: created._id,
-          bio: 'Polished front-desk coordinator and billing supervisor with 4+ years of wedding hospitality experience.',
-          experienceYears: '4',
-          skills: ['Reception', 'Billing', 'Guest Relations', 'Fluent English', 'QR Ticketing'],
-          rating: 4.9,
-          completedJobsCount: 14,
-          isVerified: true,
-          prevEvents: ['MEB Energy Summit 2025', 'Ultra Luxe Wedding Ahmedabad 2026']
-        });
-      }
     }
   }
 }
@@ -119,7 +99,7 @@ export async function POST(req: Request) {
       return response;
     }
 
-    // Seed demo accounts automatically
+    // Seed demo accounts automatically in real database
     await ensureDemoUsers();
 
     const { email, password } = await req.json();
