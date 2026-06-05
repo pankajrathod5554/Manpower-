@@ -52,16 +52,18 @@ if (!global.mockDatabase) {
     events: [
       {
         _id: 'event_1',
-        name: 'Royal Wedding Reception Gala',
+        name: 'Ambani Wedding Reception',
+        clientName: 'Elite Planners',
+        requiredStaffCount: 12,
         date: '2026-06-15',
         time: '18:00',
         location: 'Taj Skyline, Ahmedabad',
-        category: 'Wedding Staff',
+        category: 'Wedding Hospitality Staff',
         assignedStaff: [
           {
             _id: 'assign_1',
             staffName: 'Rahul Sharma',
-            category: 'Wedding Staff',
+            category: 'Wedding Hospitality Staff',
             mobileNumber: '+91 99999 88888',
             userId: 'user_staff_1'
           }
@@ -70,19 +72,21 @@ if (!global.mockDatabase) {
       },
       {
         _id: 'event_2',
-        name: 'International Tech Summit 2026',
+        name: 'YOYO Concert Ahmedabad',
+        clientName: 'Red Events Ltd',
+        requiredStaffCount: 5,
         date: '2026-06-18',
-        time: '09:00',
+        time: '19:00',
         location: 'Exhibition Centre, Gandhinagar',
-        category: 'Hospitality Staff',
+        category: 'Technical Supervisors',
         assignedStaff: [
           {
             _id: 'assign_2',
             staffName: 'Amit Patel',
-            category: 'Hospitality Staff',
+            category: 'Technical Supervisors',
             mobileNumber: '+91 98888 77777',
             userId: 'user_staff_2',
-            checkInTime: new Date('2026-06-05T09:05:00Z'),
+            checkInTime: new Date('2026-06-05T19:05:00Z'),
             checkInLocation: '23.0225, 72.5714',
             checkInSelfie: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5CYII='
           }
@@ -92,15 +96,17 @@ if (!global.mockDatabase) {
       {
         _id: 'event_3',
         name: 'Annual Corporate Awards Night',
+        clientName: 'Tata Group',
+        requiredStaffCount: 8,
         date: '2026-06-01',
         time: '19:00',
         location: 'Karnavati Club, SG Highway',
-        category: 'Security Staff',
+        category: 'Corporate Event Staff',
         assignedStaff: [
           {
             _id: 'assign_3',
             staffName: 'Pooja Shah',
-            category: 'Security Staff',
+            category: 'Corporate Event Staff',
             mobileNumber: '+91 97777 55555',
             userId: 'user_staff_3',
             checkInTime: new Date('2026-06-01T18:45:00Z'),
@@ -111,6 +117,22 @@ if (!global.mockDatabase) {
             checkOutSelfie: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5CYII='
           }
         ],
+        createdAt: new Date()
+      }
+    ],
+    bookings: [
+      {
+        _id: 'booking_1',
+        companyName: 'Genesis Corporate Solutions',
+        contactPerson: 'Vikram Malhotra',
+        mobileNumber: '+91 98989 12345',
+        email: 'vikram@genesis.in',
+        eventName: 'Tech Innovation Summit 2026',
+        eventDate: '2026-06-25',
+        eventLocation: 'GIFT City Club, Gandhinagar',
+        staffCategory: 'Corporate Event Staff',
+        staffCount: 6,
+        notes: 'Need fluent English speakers and concierge experience.',
         createdAt: new Date()
       }
     ],
@@ -125,3 +147,4 @@ if (!global.mockDatabase) {
 
 export const mockDb = global.mockDatabase;
 export const useMockDb = global.useMockDb;
+

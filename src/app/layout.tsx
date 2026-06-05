@@ -57,12 +57,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        <title>CrewConnect | Event Staff Deployment &amp; Attendance Platform</title>
-        <meta name="description" content="Deploy professional event staff across hospitality, security, and logistics. Monitor attendance in real-time with selfie verification and GPS geolocation." />
+        <title>CrewConnect Luxury | Premium Event Manpower Services</title>
+        <meta name="description" content="Deploy premium event manpower across luxury hospitality, corporate hosting, and technical event management. Real-time GPS &amp; selfie attendance verification." />
       </head>
-      <body className="flex flex-col min-h-screen text-slate-900 bg-slate-50 antialiased font-inter">
+      <body className="flex flex-col min-h-screen text-slate-100 bg-slate-950 antialiased font-inter">
         {/* Top Navbar */}
-        <header className="fixed top-0 left-0 w-full z-50 bg-slate-950/95 text-white backdrop-blur-md shadow-md h-16 md:h-20 flex items-center border-b border-slate-900">
+        <header className="fixed top-0 left-0 w-full z-50 bg-slate-950/80 text-white backdrop-blur-md shadow-lg h-16 md:h-20 flex items-center border-b border-slate-900/50">
           <div className="max-w-7xl mx-auto w-full flex justify-between items-center px-4 md:px-8">
             <div className="flex items-center gap-4">
               <button
@@ -75,10 +75,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               
               <Link href="/" className="flex flex-col select-none group">
                 <span className="font-poppins text-lg md:text-2xl font-extrabold tracking-tight text-white flex items-center gap-1.5">
-                  ⚡ <span className="text-primary">Crew</span>Connect
+                  👑 <span className="text-primary-gradient">Crew</span>Connect <span className="text-[10px] bg-primary/10 border border-primary/20 text-primary px-1.5 py-0.5 rounded font-medium uppercase tracking-wider font-inter">Luxury</span>
                 </span>
                 <span className="text-[8px] md:text-[9px] text-slate-400 font-bold tracking-widest uppercase">
-                  Staff Deployment &amp; Attendance
+                  Premium Event Manpower Platform
                 </span>
               </Link>
             </div>
@@ -86,20 +86,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-6">
               <Link href="/" className={`text-sm font-semibold hover:text-primary transition-colors ${pathname === '/' ? 'text-primary' : 'text-slate-300'}`}>Home</Link>
-              <Link href="/services" className={`text-sm font-semibold hover:text-primary transition-colors ${pathname === '/services' ? 'text-primary' : 'text-slate-300'}`}>Services</Link>
-              <Link href="/contact" className={`text-sm font-semibold hover:text-primary transition-colors ${pathname === '/contact' ? 'text-primary' : 'text-slate-300'}`}>Contact</Link>
+              <Link href="/services" className={`text-sm font-semibold hover:text-primary transition-colors ${pathname === '/services' ? 'text-primary' : 'text-slate-300'}`}>Manpower Services</Link>
+              <Link href="/contact" className={`text-sm font-semibold hover:text-primary transition-colors ${pathname === '/contact' ? 'text-primary' : 'text-slate-300'}`}>Contact Inquiry</Link>
 
               {/* Active Admin links */}
               {user?.role === 'admin' && (
                 <Link href="/admin" className={`text-sm font-semibold hover:text-primary transition-colors flex items-center gap-1 ${pathname === '/admin' ? 'text-primary' : 'text-slate-400'}`}>
-                  <Shield className="w-3.5 h-3.5" /> Admin Portal
+                  <Shield className="w-3.5 h-3.5" /> Admin Console
                 </Link>
               )}
 
               {/* Active Staff links */}
               {user?.role === 'staff' && (
                 <Link href="/dashboard/staff" className={`text-sm font-semibold hover:text-primary transition-colors flex items-center gap-1 ${pathname.startsWith('/dashboard') ? 'text-primary' : 'text-slate-400'}`}>
-                  <Calendar className="w-3.5 h-3.5" /> My Deployments
+                  <Calendar className="w-3.5 h-3.5" /> Staff Shifts
                 </Link>
               )}
             </nav>
@@ -109,20 +109,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <div className="w-8 h-8 rounded-full border-2 border-primary border-t-transparent animate-spin" />
               ) : user ? (
                 <div className="flex items-center gap-3">
-                  <span className="hidden md:inline-block text-xs font-bold text-slate-350">
-                    Logged in as: <span className="text-primary">{user.fullName}</span> ({user.role})
+                  <span className="hidden md:inline-block text-xs font-bold text-slate-400">
+                    Active: <span className="text-primary">{user.fullName}</span> ({user.role})
                   </span>
                   <button 
                     onClick={handleLogout}
-                    className="bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs md:text-sm px-4 py-2 rounded-lg flex items-center gap-1.5 active:scale-95 transition-all border border-slate-700"
+                    className="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs md:text-sm px-4 py-2 rounded-lg flex items-center gap-1.5 active:scale-95 transition-all border border-slate-800"
                   >
-                    <LogOut className="w-3.5 h-3.5" /> Logout
+                    <LogOut className="w-3.5 h-3.5" /> Sign Out
                   </button>
                 </div>
               ) : (
                 <div className="flex items-center gap-2">
                   <Link href="/login">
-                    <button className="bg-primary hover:bg-primary-hover text-white font-bold text-xs md:text-sm px-5 py-2.5 rounded-lg active:scale-95 transition-all shadow-md shadow-primary/15 flex items-center gap-1">
+                    <button className="bg-primary hover:bg-primary-hover text-white font-bold text-xs md:text-sm px-5 py-2.5 rounded-lg active:scale-95 transition-all shadow-lg shadow-primary/20 flex items-center gap-1">
                       <LogIn className="w-3.5 h-3.5" /> Portal Sign In
                     </button>
                   </Link>
@@ -134,15 +134,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         {/* Mobile Navigation Drawer */}
         <div 
-          className={`fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-[99] transition-opacity duration-300 ${drawerOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+          className={`fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-[99] transition-opacity duration-300 ${drawerOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
           onClick={() => setDrawerOpen(false)}
         />
         <aside 
-          className={`fixed inset-y-0 left-0 w-80 z-[100] bg-slate-950 text-white shadow-2xl flex flex-col py-6 space-y-4 transform transition-transform duration-300 ease-in-out ${drawerOpen ? 'translate-x-0' : '-translate-x-full'}`}
+          className={`fixed inset-y-0 left-0 w-80 z-[100] bg-slate-950 text-white shadow-2xl flex flex-col py-6 space-y-4 transform transition-transform duration-300 ease-in-out border-r border-slate-900 ${drawerOpen ? 'translate-x-0' : '-translate-x-full'}`}
         >
           <div className="flex items-center justify-between px-6 pb-4 border-b border-slate-900">
             <span className="font-poppins text-xl font-bold tracking-tight text-white flex items-center gap-2">
-              ⚡ <span className="text-primary">Crew</span>Connect
+              👑 <span className="text-primary">Crew</span>Connect
             </span>
             <button 
               onClick={() => setDrawerOpen(false)} 
@@ -166,14 +166,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               onClick={() => setDrawerOpen(false)} 
               className="flex items-center gap-4 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-900 hover:text-white transition-all text-sm font-semibold"
             >
-              Services
+              Manpower Services
             </Link>
             <Link 
               href="/contact" 
               onClick={() => setDrawerOpen(false)} 
               className="flex items-center gap-4 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-900 hover:text-white transition-all text-sm font-semibold"
             >
-              Contact
+              Contact Inquiry
             </Link>
 
             {/* Auth Dependent Routes */}
@@ -183,7 +183,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 onClick={() => setDrawerOpen(false)} 
                 className="flex items-center gap-4 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-900 hover:text-white transition-all text-sm font-semibold"
               >
-                <Shield className="w-4 h-4 text-primary" /> Admin Portal
+                <Shield className="w-4 h-4 text-primary" /> Admin Console
               </Link>
             )}
 
@@ -193,23 +193,23 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 onClick={() => setDrawerOpen(false)} 
                 className="flex items-center gap-4 px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-900 hover:text-white transition-all text-sm font-semibold"
               >
-                <Calendar className="w-4 h-4 text-primary" /> My Deployments
+                <Calendar className="w-4 h-4 text-primary" /> Staff Shifts
               </Link>
             )}
 
             {user && (
               <button 
                 onClick={() => { setDrawerOpen(false); handleLogout(); }}
-                className="flex w-full items-center gap-4 px-4 py-3 rounded-lg text-slate-450 hover:bg-red-950/30 hover:text-red-400 transition-all text-sm font-semibold border-t border-slate-900 mt-auto"
+                className="flex w-full items-center gap-4 px-4 py-3 rounded-lg text-slate-400 hover:bg-red-950/30 hover:text-red-400 transition-all text-sm font-semibold border-t border-slate-900 mt-auto"
               >
-                <LogOut className="w-4 h-4" /> Logout
+                <LogOut className="w-4 h-4" /> Sign Out
               </button>
             )}
           </nav>
         </aside>
 
         {/* Content Canvas */}
-        <main className="flex-grow pt-16 md:pt-20 min-h-screen">
+        <main className="flex-grow pt-16 md:pt-20 min-h-screen bg-slate-950">
           {children}
         </main>
 
@@ -218,38 +218,38 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="space-y-4">
               <div className="font-poppins text-xl font-bold tracking-tight text-white">
-                ⚡ <span className="text-primary">Crew</span>Connect
+                👑 <span className="text-primary">Crew</span>Connect <span className="text-xs text-slate-400 font-normal">Luxury</span>
               </div>
-              <p className="text-slate-450 text-xs md:text-sm leading-relaxed max-w-sm">
-                Event Staff Deployment &amp; Attendance Management Platform. Restructured layout serving luxury weddings, corporate hospitality, private security, logistics, and AV technical manpower.
+              <p className="text-slate-400 text-xs md:text-sm leading-relaxed max-w-sm">
+                Premium Event Manpower Platform. Sourcing and deploying top-tier hospitality, supervisor, hostess, corporate, and technical production staff for elite private and corporate events.
               </p>
             </div>
             
             <div>
-              <h4 className="font-poppins font-bold text-sm text-primary uppercase tracking-widest mb-4">Verticals</h4>
+              <h4 className="font-poppins font-bold text-sm text-primary uppercase tracking-widest mb-4">Services</h4>
               <ul className="space-y-2 text-xs md:text-sm text-slate-400">
-                <li>Wedding Staff</li>
-                <li>Hospitality Staff</li>
-                <li>Security Staff</li>
-                <li>Technical Staff</li>
-                <li>Logistics Staff</li>
+                <li>Wedding Hospitality Staff</li>
+                <li>Event Supervisors</li>
+                <li>Hostess &amp; Promoters</li>
+                <li>Corporate Event Staff</li>
+                <li>Technical Supervisors</li>
               </ul>
             </div>
 
             <div>
               <h4 className="font-poppins font-bold text-sm text-primary uppercase tracking-widest mb-4">Contact &amp; Support</h4>
               <ul className="space-y-2 text-xs md:text-sm text-slate-400">
-                <li><Link href="/contact" className="hover:text-primary transition-colors">Contact Support Desk</Link></li>
+                <li><Link href="/contact" className="hover:text-primary transition-colors">Contact Inquiries</Link></li>
                 <li><Link href="/services" className="hover:text-primary transition-colors font-bold">Services Catalog</Link></li>
-                <li><span className="text-slate-500">System Telemetry Online</span></li>
+                <li><span className="text-slate-500">Selfie &amp; GPS verification Active</span></li>
               </ul>
             </div>
           </div>
           
           <div className="max-w-7xl mx-auto w-full flex flex-col md:flex-row justify-between items-center mt-8 pt-6 border-t border-slate-900 text-xs text-slate-400 gap-4">
-            <p>© 2026 CrewConnect Ltd. All rights reserved.</p>
-            <p className="flex items-center gap-1 font-bold text-[10px] uppercase tracking-wider">
-              Selfie &amp; GPS Verification Active <span className="text-primary">★</span>
+            <p>© 2026 CrewConnect Luxury. All rights reserved.</p>
+            <p className="flex items-center gap-1 font-bold text-[10px] uppercase tracking-wider text-slate-500">
+              Verified Premium Event Staffing Platform <span className="text-primary">★</span>
             </p>
           </div>
         </footer>

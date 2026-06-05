@@ -60,9 +60,9 @@ export async function POST(req: Request) {
     }
 
     const body = await req.json();
-    const { name, date, time, location, category, assignedStaff = [] } = body;
+    const { name, clientName, requiredStaffCount, date, time, location, category, assignedStaff = [] } = body;
 
-    if (!name || !date || !time || !location || !category) {
+    if (!name || !clientName || requiredStaffCount === undefined || !date || !time || !location || !category) {
       return NextResponse.json({ success: false, error: 'Missing required event fields' }, { status: 400 });
     }
 
@@ -89,6 +89,8 @@ export async function POST(req: Request) {
       const newEvent = {
         _id: 'event_' + Math.random().toString(36).substring(2, 9),
         name,
+        clientName,
+        requiredStaffCount: Number(requiredStaffCount),
         date,
         time,
         location,
@@ -102,6 +104,8 @@ export async function POST(req: Request) {
 
     const newEvent = await Event.create({
       name,
+      clientName,
+      requiredStaffCount: Number(requiredStaffCount),
       date,
       time,
       location,
@@ -127,7 +131,7 @@ export async function PUT(req: Request) {
     }
 
     const body = await req.json();
-    const { id, name, date, time, location, category, assignedStaff = [] } = body;
+    const { id, name, clientName, requiredStaffCount, date, time, location, category, assignedStaff = [] } = body;
 
     if (!id) {
       return NextResponse.json({ success: false, error: 'Event ID is required' }, { status: 400 });
@@ -170,6 +174,8 @@ export async function PUT(req: Request) {
       const updatedEvent = {
         ...existing,
         name: name || existing.name,
+        clientName: clientName || existing.clientName,
+        requiredStaffCount: requiredStaffCount !== undefined ? Number(requiredStaffCount) : existing.requiredStaffCount,
         date: date || existing.date,
         time: time || existing.time,
         location: location || existing.location,
@@ -222,6 +228,8 @@ export async function PUT(req: Request) {
       {
         $set: {
           name,
+          clientName,
+          requiredStaffCount: Number(requiredStaffCount),
           date,
           time,
           location,
