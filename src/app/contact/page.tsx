@@ -19,13 +19,21 @@ export default function Contact() {
     setSuccess(false);
 
     try {
-      // Simulate API submission
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      setSuccess(true);
-      setName('');
-      setEmail('');
-      setSubject('');
-      setMessage('');
+      const response = await fetch('/api/contacts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, subject, message })
+      });
+      const data = await response.json();
+      if (data.success) {
+        setSuccess(true);
+        setName('');
+        setEmail('');
+        setSubject('');
+        setMessage('');
+      } else {
+        setError(data.error || 'Failed to send message. Please try again.');
+      }
     } catch (err) {
       setError('Failed to send message. Please try again.');
     } finally {
@@ -61,10 +69,11 @@ export default function Contact() {
               </div>
               <div>
                 <h3 className="font-bold text-white text-xs uppercase tracking-wider">Call concierge center</h3>
-                <p className="text-primary text-sm mt-1 font-semibold">+91 79 4000 1234</p>
+                <p className="text-primary text-sm mt-1 font-semibold">9725705554</p>
                 <p className="text-[10px] text-slate-500 mt-0.5">Active 24/7 for urgent staffing dispatches</p>
               </div>
             </div>
+
 
             <div className="flex items-start gap-4 p-5 bg-slate-900/40 border border-slate-800 rounded-2xl shadow-2xl glass-card">
               <div className="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center shrink-0">

@@ -94,8 +94,16 @@ export default function Home() {
                 <ArrowRight className="w-4 h-4" />
               </button>
 
+              <button
+                onClick={() => window.dispatchEvent(new Event('open-join-modal'))}
+                className="w-full sm:w-auto bg-slate-900 hover:bg-slate-850 border border-primary text-primary hover:text-white px-8 py-4 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2 active:scale-95"
+              >
+                Join Our Team
+              </button>
+
               {loading ? (
                 <div className="w-40 h-14 bg-slate-900 border border-slate-800 rounded-xl animate-pulse" />
+
               ) : session ? (
                 <Link href={session.role === 'admin' ? '/admin' : '/dashboard/staff'} className="w-full sm:w-auto">
                   <button className="w-full bg-slate-900 hover:bg-slate-850 border border-slate-800 text-white px-8 py-4 rounded-xl font-bold text-sm transition-all flex items-center justify-center gap-2 active:scale-95">

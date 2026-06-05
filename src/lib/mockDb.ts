@@ -136,6 +136,48 @@ if (!global.mockDatabase) {
         createdAt: new Date()
       }
     ],
+    candidates: [
+      {
+        _id: 'candidate_1',
+        fullName: 'Karan Malhotra',
+        mobileNumber: '9725705554',
+        whatsAppNumber: '9725705554',
+        email: 'karan.m@gmail.com',
+        city: 'Ahmedabad',
+        gender: 'Male',
+        age: 24,
+        category: 'Event Supervisors',
+        experience: '2 Years',
+        aadhaarPhoto: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5CYII=',
+        profilePhoto: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5CYII=',
+        createdAt: new Date()
+      },
+      {
+        _id: 'candidate_2',
+        fullName: 'Sneha Patel',
+        mobileNumber: '9898989898',
+        whatsAppNumber: '9898989898',
+        email: 'sneha.patel@yahoo.com',
+        city: 'Baroda',
+        gender: 'Female',
+        age: 22,
+        category: 'Welcome Girls',
+        experience: '1 Year',
+        aadhaarPhoto: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5CYII=',
+        profilePhoto: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5CYII=',
+        createdAt: new Date()
+      }
+    ],
+    contactRequests: [
+      {
+        _id: 'contact_1',
+        name: 'Rajesh Mehta',
+        email: 'rajesh@mehtaplanners.com',
+        subject: 'Manpower requirement for corporate launch',
+        message: 'We are looking for 15 registration executives and 5 coordinators for an upcoming launch in Ahmedabad. Please send us your quotation.',
+        createdAt: new Date()
+      }
+    ],
     // Legacy placeholders to prevent failures in unmodified code
     jobs: [],
     applications: [],
@@ -147,4 +189,5 @@ if (!global.mockDatabase) {
 
 export const mockDb = global.mockDatabase;
 export const useMockDb = global.useMockDb;
+
 

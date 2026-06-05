@@ -76,10 +76,39 @@ export const User = (mongoose.models.User || mongoose.model('User', UserSchema))
 export const Event = (mongoose.models.Event || mongoose.model('Event', EventSchema)) as mongoose.Model<any>;
 export const Booking = (mongoose.models.Booking || mongoose.model('Booking', BookingSchema)) as mongoose.Model<any>;
 
+// Candidate Schema for Manpower Registration
+const CandidateSchema = new mongoose.Schema({
+  fullName: { type: String, required: true },
+  mobileNumber: { type: String, required: true },
+  whatsAppNumber: { type: String, required: true },
+  email: { type: String, required: true },
+  city: { type: String, required: true },
+  gender: { type: String, required: true },
+  age: { type: Number, required: true },
+  category: { type: String, required: true },
+  experience: { type: String, required: true },
+  aadhaarPhoto: { type: String, required: true }, // base64 representation of Aadhaar card upload
+  profilePhoto: { type: String, required: true }, // base64 representation of candidate photo
+  createdAt: { type: Date, default: Date.now }
+});
+
+// Contact Request Schema
+const ContactRequestSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  email: { type: String, required: true },
+  subject: { type: String, required: true },
+  message: { type: String, required: true },
+  createdAt: { type: Date, default: Date.now }
+});
+
+export const Candidate = (mongoose.models.Candidate || mongoose.model('Candidate', CandidateSchema)) as mongoose.Model<any>;
+export const ContactRequest = (mongoose.models.ContactRequest || mongoose.model('ContactRequest', ContactRequestSchema)) as mongoose.Model<any>;
+
 // Export placeholders for deleted models to prevent compiler issues in unmodified files temporarily
 export const Job = (mongoose.models.Job || mongoose.model('Job', new mongoose.Schema({}))) as mongoose.Model<any>;
 export const JobApplication = (mongoose.models.JobApplication || mongoose.model('JobApplication', new mongoose.Schema({}))) as mongoose.Model<any>;
 export const WorkerProfile = (mongoose.models.WorkerProfile || mongoose.model('WorkerProfile', new mongoose.Schema({}))) as mongoose.Model<any>;
 export const EmployerInquiry = (mongoose.models.EmployerInquiry || mongoose.model('EmployerInquiry', new mongoose.Schema({}))) as mongoose.Model<any>;
 export const JobSeeker = (mongoose.models.JobSeeker || mongoose.model('JobSeeker', new mongoose.Schema({}))) as mongoose.Model<any>;
+
 

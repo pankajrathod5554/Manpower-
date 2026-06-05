@@ -58,15 +58,57 @@ interface UserType {
   mobileNumber: string;
 }
 
+interface CandidateType {
+  _id: string;
+  fullName: string;
+  mobileNumber: string;
+  whatsAppNumber: string;
+  email: string;
+  city: string;
+  gender: string;
+  age: number;
+  category: string;
+  experience: string;
+  aadhaarPhoto: string;
+  profilePhoto: string;
+  createdAt: string;
+}
+
+interface ContactRequestType {
+  _id: string;
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+  createdAt: string;
+}
+
 export default function AdminConsole() {
   const router = useRouter();
   const [currentUser, setCurrentUser] = useState<UserType | null>(null);
   const [events, setEvents] = useState<EventType[]>([]);
   const [bookings, setBookings] = useState<BookingType[]>([]);
+  const [candidates, setCandidates] = useState<CandidateType[]>([]);
+  const [contacts, setContacts] = useState<ContactRequestType[]>([]);
   const [loading, setLoading] = useState(true);
   const [errorMsg, setErrorMsg] = useState('');
   const [successMsg, setSuccessMsg] = useState('');
-  const [activeTab, setActiveTab] = useState<'overview' | 'events' | 'bookings' | 'attendance'>('overview');
+  const [activeTab, setActiveTab] = useState<'overview' | 'events' | 'bookings' | 'attendance' | 'registrations' | 'contacts'>('overview');
+
+  // Filter / Sorting / Pagination States for Candidates
+  const [candidateSearch, setCandidateSearch] = useState('');
+  const [candidateCategoryFilter, setCandidateCategoryFilter] = useState('');
+  const [candidateCityFilter, setCandidateCityFilter] = useState('');
+  const [candidateExperienceFilter, setCandidateExperienceFilter] = useState('');
+  const [candidateSortKey, setCandidateSortKey] = useState<'fullName' | 'createdAt' | 'experience'>('createdAt');
+  const [candidateSortOrder, setCandidateSortOrder] = useState<'asc' | 'desc'>('desc');
+  const [candidatePage, setCandidatePage] = useState(1);
+  const candidatesPerPage = 10;
+
+  // Filter / Pagination States for Contact Requests
+  const [contactSearch, setContactSearch] = useState('');
+  const [contactPage, setContactPage] = useState(1);
+  const contactsPerPage = 10;
 
   // Modal / Form States
   const [showEventModal, setShowEventModal] = useState(false);
@@ -87,7 +129,7 @@ export default function AdminConsole() {
   const [tempStaffMobile, setTempStaffMobile] = useState('');
   const [currentStaffList, setCurrentStaffList] = useState<AssignedStaff[]>([]);
 
-  // Selfie Modal State
+  // Selfie / Upload Document Viewer Modal State
   const [activeSelfie, setActiveSelfie] = useState<string | null>(null);
   const [selfieTitle, setSelfieTitle] = useState('');
 
@@ -125,6 +167,20 @@ export default function AdminConsole() {
       if (bookingsData.success) {
         setBookings(bookingsData.data);
       }
+
+      // 4. Fetch Candidates
+      const candidatesRes = await fetch('/api/candidates');
+      const candidatesData = await candidatesRes.json();
+      if (candidatesData.success) {
+        setCandidates(candidatesData.data);
+      }
+
+      // 5. Fetch Contacts
+      const contactsRes = await fetch('/api/contacts');
+      const contactsData = await contactsRes.json();
+      if (contactsData.success) {
+        setContacts(contactsData.data);
+      }
       
       if (global.useMockDb) {
         setErrorMsg('Offline Mode Active: Currently operating on the In-Memory Mock Database.');
@@ -140,6 +196,7 @@ export default function AdminConsole() {
   useEffect(() => {
     fetchSessionAndData();
   }, []);
+
 
   const resetForm = () => {
     setEventName('');
@@ -210,6 +267,47 @@ export default function AdminConsole() {
       setErrorMsg('Connection error.');
     }
   };
+
+  // Delete Candidate Onboarding Registration
+  const handleDeleteCandidate = async (id: string) => {
+    if (!window.confirm('Are you sure you want to permanently delete this candidate registration?')) return;
+    setErrorMsg('');
+    setSuccessMsg('');
+    try {
+      const res = await fetch(`/api/candidates?id=${id}`, { method: 'DELETE' });
+      const data = await res.json();
+      if (data.success) {
+        setSuccessMsg('Candidate registration deleted successfully.');
+        fetchSessionAndData();
+      } else {
+        setErrorMsg(data.error || 'Failed to delete candidate.');
+      }
+    } catch (err) {
+      console.error(err);
+      setErrorMsg('Connection error.');
+    }
+  };
+
+  // Delete Contact Form Request
+  const handleDeleteContact = async (id: string) => {
+    if (!window.confirm('Delete this contact request?')) return;
+    setErrorMsg('');
+    setSuccessMsg('');
+    try {
+      const res = await fetch(`/api/contacts?id=${id}`, { method: 'DELETE' });
+      const data = await res.json();
+      if (data.success) {
+        setSuccessMsg('Contact request deleted successfully.');
+        fetchSessionAndData();
+      } else {
+        setErrorMsg(data.error || 'Failed to delete contact request.');
+      }
+    } catch (err) {
+      console.error(err);
+      setErrorMsg('Connection error.');
+    }
+  };
+
 
   // Staff Subform Helpers
   const addStaffToTempList = () => {
@@ -326,6 +424,64 @@ export default function AdminConsole() {
     document.body.removeChild(link);
   };
 
+  // CSV Candidate Exporter
+  const handleExportCandidatesCSV = () => {
+    const headers = ['Name', 'Mobile', 'WhatsApp', 'Email', 'City', 'Category', 'Experience', 'Registration Date'];
+    
+    const rows = sortedCandidates.map(c => [
+      c.fullName,
+      c.mobileNumber,
+      c.whatsAppNumber,
+      c.email,
+      c.city,
+      c.category,
+      c.experience,
+      c.createdAt ? new Date(c.createdAt).toLocaleDateString() : 'N/A'
+    ]);
+
+    const csvContent = "data:text/csv;charset=utf-8," 
+      + [headers.join(','), ...rows.map(e => e.map(val => `"${String(val).replace(/"/g, '""')}"`).join(','))].join('\n');
+      
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", `candidates_report_${new Date().toISOString().split('T')[0]}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  // Excel Candidate Exporter
+  const handleExportCandidatesExcel = () => {
+    const headers = ['Name', 'Mobile', 'WhatsApp', 'Email', 'City', 'Category', 'Experience', 'Registration Date'];
+    
+    const rows = sortedCandidates.map(c => [
+      c.fullName,
+      c.mobileNumber,
+      c.whatsAppNumber,
+      c.email,
+      c.city,
+      c.category,
+      c.experience,
+      c.createdAt ? new Date(c.createdAt).toLocaleDateString() : 'N/A'
+    ]);
+
+    let excelContent = "<table><tr>" + headers.map(h => `<th>${h}</th>`).join('') + "</tr>";
+    rows.forEach(r => {
+      excelContent += "<tr>" + r.map(v => `<td>${v}</td>`).join('') + "</tr>";
+    });
+    excelContent += "</table>";
+
+    const blob = new Blob([excelContent], { type: 'application/vnd.ms-excel' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", `candidates_report_${new Date().toISOString().split('T')[0]}.xls`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   if (loading && !currentUser) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[70vh] gap-4 bg-slate-950 text-white">
@@ -334,6 +490,55 @@ export default function AdminConsole() {
       </div>
     );
   }
+
+  // Candidates filtering, sorting and pagination logic
+  const uniqueCities = Array.from(new Set(candidates.map(c => c.city).filter(Boolean)));
+  const uniqueCategories = Array.from(new Set(candidates.map(c => c.category).filter(Boolean)));
+
+  const filteredCandidates = candidates.filter(c => {
+    const searchMatch = !candidateSearch || 
+      c.fullName.toLowerCase().includes(candidateSearch.toLowerCase()) ||
+      c.email.toLowerCase().includes(candidateSearch.toLowerCase()) ||
+      c.mobileNumber.includes(candidateSearch) ||
+      c.city.toLowerCase().includes(candidateSearch.toLowerCase());
+      
+    const categoryMatch = !candidateCategoryFilter || c.category === candidateCategoryFilter;
+    const cityMatch = !candidateCityFilter || c.city === candidateCityFilter;
+    const experienceMatch = !candidateExperienceFilter || c.experience === candidateExperienceFilter;
+    
+    return searchMatch && categoryMatch && cityMatch && experienceMatch;
+  });
+
+  const sortedCandidates = [...filteredCandidates].sort((a, b) => {
+    let valA = a[candidateSortKey] || '';
+    let valB = b[candidateSortKey] || '';
+    
+    if (typeof valA === 'string') valA = valA.toLowerCase();
+    if (typeof valB === 'string') valB = valB.toLowerCase();
+    
+    if (valA < valB) return candidateSortOrder === 'asc' ? -1 : 1;
+    if (valA > valB) return candidateSortOrder === 'asc' ? 1 : -1;
+    return 0;
+  });
+
+  const totalCandidatePages = Math.ceil(sortedCandidates.length / candidatesPerPage) || 1;
+  const indexOfLastCandidate = candidatePage * candidatesPerPage;
+  const indexOfFirstCandidate = indexOfLastCandidate - candidatesPerPage;
+  const currentCandidates = sortedCandidates.slice(indexOfFirstCandidate, indexOfLastCandidate);
+
+  // Contacts filtering & pagination logic
+  const filteredContacts = contacts.filter(c => {
+    return !contactSearch ||
+      c.name.toLowerCase().includes(contactSearch.toLowerCase()) ||
+      c.email.toLowerCase().includes(contactSearch.toLowerCase()) ||
+      c.subject.toLowerCase().includes(contactSearch.toLowerCase()) ||
+      c.message.toLowerCase().includes(contactSearch.toLowerCase());
+  });
+
+  const totalContactPages = Math.ceil(filteredContacts.length / contactsPerPage) || 1;
+  const indexOfLastContact = contactPage * contactsPerPage;
+  const indexOfFirstContact = indexOfLastContact - contactsPerPage;
+  const currentContacts = filteredContacts.slice(indexOfFirstContact, indexOfLastContact);
 
   // Statistics Calculations
   const totalEventsCount = events.length;
@@ -344,6 +549,13 @@ export default function AdminConsole() {
   const completedEvents = events.filter(e => e.date < todayStr);
 
   const totalAssignedStaff = events.reduce((sum, ev) => sum + (ev.assignedStaff?.length || 0), 0);
+
+  const todayStartStr = new Date().toISOString().split('T')[0];
+  const newRegistrationsToday = candidates.filter(c => {
+    if (!c.createdAt) return false;
+    const cDateStr = new Date(c.createdAt).toISOString().split('T')[0];
+    return cDateStr === todayStartStr;
+  }).length;
 
   // Flat list of check-ins/outs for attendance tracking tab
   const attendanceLogs: any[] = [];
@@ -443,39 +655,78 @@ export default function AdminConsole() {
             <MessageSquare className="w-4 h-4" /> Staffing Inquiries ({bookings.length})
           </button>
           <button
+            onClick={() => setActiveTab('registrations')}
+            className={`pb-3 font-bold text-sm transition-all border-b-2 flex items-center gap-2 shrink-0 ${activeTab === 'registrations' ? 'border-primary text-primary' : 'border-transparent text-slate-400 hover:text-white'}`}
+          >
+            <Users className="w-4 h-4" /> Candidate Pool ({candidates.length})
+          </button>
+          <button
+            onClick={() => setActiveTab('contacts')}
+            className={`pb-3 font-bold text-sm transition-all border-b-2 flex items-center gap-2 shrink-0 ${activeTab === 'contacts' ? 'border-primary text-primary' : 'border-transparent text-slate-400 hover:text-white'}`}
+          >
+            <MessageSquare className="w-4 h-4" /> Contact Forms ({contacts.length})
+          </button>
+          <button
             onClick={() => setActiveTab('attendance')}
             className={`pb-3 font-bold text-sm transition-all border-b-2 flex items-center gap-2 shrink-0 ${activeTab === 'attendance' ? 'border-primary text-primary' : 'border-transparent text-slate-400 hover:text-white'}`}
           >
-            <Users className="w-4 h-4" /> Live Attendance Board ({attendanceLogs.length})
+            <Users className="w-4 h-4" /> Attendance Board ({attendanceLogs.length})
           </button>
         </div>
 
         {/* -------------------- 1. OVERVIEW TAB -------------------- */}
         {activeTab === 'overview' && (
           <div className="space-y-8 animate-fadeIn">
-            {/* Statistics Row */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-              <div className="bg-slate-900/40 p-6 rounded-3xl border border-slate-800 shadow-2xl glass-card">
-                <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Total Events</p>
-                <h3 className="font-poppins text-3xl font-black text-white mt-1">{totalEventsCount}</h3>
-              </div>
-              <div className="bg-slate-900/40 p-6 rounded-3xl border border-slate-800 shadow-2xl glass-card">
-                <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Upcoming Events</p>
-                <h3 className="font-poppins text-3xl font-black text-white mt-1">{upcomingEvents.length}</h3>
-              </div>
-              <div className="bg-slate-900/40 p-6 rounded-3xl border border-slate-800 shadow-2xl glass-card border-l-primary/30">
-                <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Active Events (Today)</p>
-                <h3 className="font-poppins text-3xl font-black text-primary mt-1">{activeEvents.length}</h3>
-              </div>
-              <div className="bg-slate-900/40 p-6 rounded-3xl border border-slate-800 shadow-2xl glass-card">
-                <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Completed Events</p>
-                <h3 className="font-poppins text-3xl font-black text-white mt-1">{completedEvents.length}</h3>
-              </div>
-              <div className="bg-slate-900/40 p-6 rounded-3xl border border-slate-800 shadow-2xl glass-card">
-                <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Assigned Staff</p>
-                <h3 className="font-poppins text-3xl font-black text-white mt-1">{totalAssignedStaff} Crew</h3>
+            {/* Event Deployments Statistics Row */}
+            <div>
+              <h4 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3">Event Deployments Statistics</h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+                <div className="bg-slate-900/40 p-6 rounded-3xl border border-slate-800 shadow-2xl glass-card">
+                  <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Total Events</p>
+                  <h3 className="font-poppins text-3xl font-black text-white mt-1">{totalEventsCount}</h3>
+                </div>
+                <div className="bg-slate-900/40 p-6 rounded-3xl border border-slate-800 shadow-2xl glass-card">
+                  <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Upcoming Events</p>
+                  <h3 className="font-poppins text-3xl font-black text-white mt-1">{upcomingEvents.length}</h3>
+                </div>
+                <div className="bg-slate-900/40 p-6 rounded-3xl border border-slate-800 shadow-2xl glass-card border-l-primary/30">
+                  <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Active Events (Today)</p>
+                  <h3 className="font-poppins text-3xl font-black text-primary mt-1">{activeEvents.length}</h3>
+                </div>
+                <div className="bg-slate-900/40 p-6 rounded-3xl border border-slate-800 shadow-2xl glass-card">
+                  <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Completed Events</p>
+                  <h3 className="font-poppins text-3xl font-black text-white mt-1">{completedEvents.length}</h3>
+                </div>
+                <div className="bg-slate-900/40 p-6 rounded-3xl border border-slate-800 shadow-2xl glass-card">
+                  <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Assigned Staff</p>
+                  <h3 className="font-poppins text-3xl font-black text-white mt-1">{totalAssignedStaff} Crew</h3>
+                </div>
               </div>
             </div>
+
+            {/* Manpower Pool & Contacts Statistics Row */}
+            <div>
+              <h4 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3">Onboarding &amp; Inquiry Statistics</h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div className="bg-slate-900/40 p-6 rounded-3xl border border-slate-800 shadow-2xl glass-card border-l-primary/30">
+                  <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Total Registrations</p>
+                  <h3 className="font-poppins text-3xl font-black text-primary mt-1">{candidates.length}</h3>
+                </div>
+                <div className="bg-slate-900/40 p-6 rounded-3xl border border-slate-800 shadow-2xl glass-card">
+                  <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Total Categories</p>
+                  <h3 className="font-poppins text-3xl font-black text-white mt-1">{uniqueCategories.length}</h3>
+                </div>
+                <div className="bg-slate-900/40 p-6 rounded-3xl border border-slate-800 shadow-2xl glass-card">
+                  <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">Total Contact Requests</p>
+                  <h3 className="font-poppins text-3xl font-black text-white mt-1">{contacts.length}</h3>
+                </div>
+                <div className="bg-slate-900/40 p-6 rounded-3xl border border-slate-800 shadow-2xl glass-card border-l-green-500/30">
+                  <p className="text-xs font-bold text-slate-500 uppercase tracking-wider">New Registrations Today</p>
+                  <h3 className="font-poppins text-3xl font-black text-green-450 mt-1">{newRegistrationsToday}</h3>
+                </div>
+              </div>
+            </div>
+
 
             {/* Split Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -796,6 +1047,335 @@ export default function AdminConsole() {
                   </tbody>
                 </table>
               </div>
+            </div>
+          </div>
+        )}
+
+        {/* -------------------- 5. CANDIDATE REGISTRATIONS TAB -------------------- */}
+        {activeTab === 'registrations' && (
+          <div className="space-y-6 animate-fadeIn">
+            {/* Filter Controls & Exports */}
+            <div className="bg-slate-900/40 p-6 border border-slate-800 rounded-3xl glass-card space-y-4">
+              <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
+                <h3 className="font-poppins font-bold text-lg text-white">Candidates Onboarding Pool</h3>
+                <div className="flex flex-wrap gap-3 w-full lg:w-auto">
+                  <button 
+                    onClick={handleExportCandidatesCSV}
+                    disabled={sortedCandidates.length === 0}
+                    className="flex-1 lg:flex-initial flex items-center justify-center gap-2 px-4 py-2.5 bg-slate-950 border border-slate-800 hover:bg-slate-900 text-white text-xs font-bold rounded-xl disabled:opacity-40 transition-all shadow-md active:scale-95"
+                  >
+                    <Download className="w-4 h-4 text-primary" /> Export CSV
+                  </button>
+                  <button 
+                    onClick={handleExportCandidatesExcel}
+                    disabled={sortedCandidates.length === 0}
+                    className="flex-1 lg:flex-initial flex items-center justify-center gap-2 px-4 py-2.5 bg-primary hover:bg-primary-hover text-white text-xs font-bold rounded-xl disabled:opacity-40 transition-all shadow-md shadow-primary/10 active:scale-95"
+                  >
+                    <Download className="w-4 h-4" /> Export Excel
+                  </button>
+                </div>
+              </div>
+
+              {/* Filters grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 pt-2">
+                {/* Search */}
+                <div>
+                  <label className="block text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-1">Search Candidates</label>
+                  <input
+                    type="text"
+                    value={candidateSearch}
+                    onChange={(e) => { setCandidateSearch(e.target.value); setCandidatePage(1); }}
+                    placeholder="Search by name, email, city..."
+                    className="w-full px-3 py-2 border border-slate-850 rounded-xl text-xs text-white bg-slate-950 outline-none focus:border-primary"
+                  />
+                </div>
+
+                {/* Category Filter */}
+                <div>
+                  <label className="block text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-1">Category Wise</label>
+                  <select
+                    value={candidateCategoryFilter}
+                    onChange={(e) => { setCandidateCategoryFilter(e.target.value); setCandidatePage(1); }}
+                    className="w-full px-3 py-2 border border-slate-850 rounded-xl text-xs text-white bg-slate-950 outline-none focus:border-primary"
+                  >
+                    <option value="">All Categories</option>
+                    <option value="Wedding Hospitality Staff">Wedding Hospitality Staff</option>
+                    <option value="Welcome Girls">Welcome Girls</option>
+                    <option value="Welcome Boys">Welcome Boys</option>
+                    <option value="Event Supervisors">Event Supervisors</option>
+                    <option value="Hostess">Hostess</option>
+                    <option value="Promoters">Promoters</option>
+                    <option value="Corporate Event Staff">Corporate Event Staff</option>
+                    <option value="Registration Executives">Registration Executives</option>
+                    <option value="Technical Supervisors">Technical Supervisors</option>
+                    <option value="Sound Operators">Sound Operators</option>
+                    <option value="Light Operators">Light Operators</option>
+                    <option value="Camera Operators">Camera Operators</option>
+                    <option value="Security Guards">Security Guards</option>
+                    <option value="Bouncers">Bouncers</option>
+                    <option value="VIP Security">VIP Security</option>
+                  </select>
+                </div>
+
+                {/* City Filter */}
+                <div>
+                  <label className="block text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-1">City Wise</label>
+                  <select
+                    value={candidateCityFilter}
+                    onChange={(e) => { setCandidateCityFilter(e.target.value); setCandidatePage(1); }}
+                    className="w-full px-3 py-2 border border-slate-850 rounded-xl text-xs text-white bg-slate-950 outline-none focus:border-primary"
+                  >
+                    <option value="">All Cities</option>
+                    {uniqueCities.map(city => (
+                      <option key={city} value={city}>{city}</option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Experience Filter */}
+                <div>
+                  <label className="block text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-1">Experience Wise</label>
+                  <select
+                    value={candidateExperienceFilter}
+                    onChange={(e) => { setCandidateExperienceFilter(e.target.value); setCandidatePage(1); }}
+                    className="w-full px-3 py-2 border border-slate-850 rounded-xl text-xs text-white bg-slate-950 outline-none focus:border-primary"
+                  >
+                    <option value="">All Experiences</option>
+                    <option value="Fresher">Fresher (No Experience)</option>
+                    <option value="Under 1 Year">Under 1 Year</option>
+                    <option value="1-2 Years">1-2 Years</option>
+                    <option value="2-3 Years">2-3 Years</option>
+                    <option value="3-5 Years">3-5 Years</option>
+                    <option value="5+ Years">5+ Years (Expert / Lead)</option>
+                  </select>
+                </div>
+
+                {/* Sort */}
+                <div>
+                  <label className="block text-[9px] font-bold text-slate-400 uppercase tracking-wider mb-1">Sort By</label>
+                  <div className="flex gap-1">
+                    <select
+                      value={candidateSortKey}
+                      onChange={(e) => setCandidateSortKey(e.target.value as any)}
+                      className="flex-grow px-3 py-2 border border-slate-850 rounded-xl text-xs text-white bg-slate-950 outline-none focus:border-primary"
+                    >
+                      <option value="createdAt">Registration Date</option>
+                      <option value="fullName">Full Name</option>
+                      <option value="experience">Experience</option>
+                    </select>
+                    <button
+                      onClick={() => setCandidateSortOrder(p => p === 'asc' ? 'desc' : 'asc')}
+                      className="px-2 border border-slate-850 rounded-xl text-xs text-white bg-slate-950 hover:bg-slate-900 active:scale-95 transition-all font-bold"
+                    >
+                      {candidateSortOrder === 'asc' ? '↑' : '↓'}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Candidates Table */}
+            <div className="bg-slate-900/40 rounded-3xl border border-slate-800 shadow-2xl glass-card overflow-hidden">
+              <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse text-sm">
+                  <thead>
+                    <tr className="bg-slate-950 text-white font-poppins font-semibold border-b border-slate-800 select-none">
+                      <th className="p-4">Profile</th>
+                      <th className="p-4">Candidate Name</th>
+                      <th className="p-4">Contact Details</th>
+                      <th className="p-4">Category</th>
+                      <th className="p-4">Location &amp; Info</th>
+                      <th className="p-4">Experience</th>
+                      <th className="p-4 text-center">Docs</th>
+                      <th className="p-4 text-center">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-850">
+                    {currentCandidates.length === 0 ? (
+                      <tr>
+                        <td colSpan={8} className="p-12 text-center text-slate-500">
+                          No candidates found matching the active criteria.
+                        </td>
+                      </tr>
+                    ) : (
+                      currentCandidates.map(c => (
+                        <tr key={c._id} className="hover:bg-slate-900/50 transition-colors">
+                          <td className="p-4">
+                            <div className="w-10 h-10 rounded-full border border-slate-800 bg-slate-950 overflow-hidden flex items-center justify-center shrink-0">
+                              {c.profilePhoto ? (
+                                // eslint-disable-next-line @next/next/no-img-element
+                                <img 
+                                  src={c.profilePhoto} 
+                                  alt={c.fullName} 
+                                  onClick={() => { setActiveSelfie(c.profilePhoto); setSelfieTitle(`Profile Photo: ${c.fullName}`); }}
+                                  className="w-full h-full object-cover cursor-pointer hover:scale-110 transition-transform" 
+                                />
+                              ) : (
+                                <Users className="w-5 h-5 text-slate-600" />
+                              )}
+                            </div>
+                          </td>
+                          <td className="p-4 font-bold text-white">
+                            {c.fullName}
+                          </td>
+                          <td className="p-4 text-xs text-slate-350">
+                            <div>Mobile: <span className="text-white font-semibold">{c.mobileNumber}</span></div>
+                            <div>WhatsApp: <a href={`https://wa.me/91${c.whatsAppNumber}`} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-semibold">{c.whatsAppNumber}</a></div>
+                            <div className="text-[10px] text-slate-500">{c.email}</div>
+                          </td>
+                          <td className="p-4">
+                            <span className="inline-block px-2.5 py-0.5 text-[10px] font-bold rounded-full uppercase border border-slate-800 bg-slate-950 text-slate-400">
+                              {c.category}
+                            </span>
+                          </td>
+                          <td className="p-4 text-xs text-slate-400">
+                            <div>City: <span className="text-white font-semibold">{c.city}</span></div>
+                            <div className="text-[10px] text-slate-500">{c.gender} • Age: {c.age}</div>
+                          </td>
+                          <td className="p-4 text-xs font-bold text-slate-300">
+                            {c.experience}
+                          </td>
+                          <td className="p-4 text-center">
+                            {c.aadhaarPhoto ? (
+                              <button
+                                onClick={() => { setActiveSelfie(c.aadhaarPhoto); setSelfieTitle(`Aadhaar Card: ${c.fullName}`); }}
+                                className="px-2 py-1 bg-slate-950 hover:bg-slate-850 border border-slate-800 text-xs rounded-lg text-primary font-bold active:scale-95 transition-all"
+                              >
+                                Aadhaar
+                              </button>
+                            ) : (
+                              <span className="text-slate-600 text-xs italic">Missing</span>
+                            )}
+                          </td>
+                          <td className="p-4 text-center">
+                            <button
+                              onClick={() => handleDeleteCandidate(c._id)}
+                              className="p-1.5 border border-red-900/40 bg-slate-950 rounded-lg hover:bg-red-950/20 transition-colors text-red-400 hover:text-red-300"
+                              title="Delete Candidate Onboarding"
+                            >
+                              <Trash2 className="w-4 h-4" />
+                            </button>
+                          </td>
+                        </tr>
+                      ))
+                    )}
+                  </tbody>
+                </table>
+              </div>
+
+              {/* Pagination */}
+              {totalCandidatePages > 1 && (
+                <div className="flex justify-between items-center px-6 py-4 border-t border-slate-850 bg-slate-950 text-xs font-bold text-slate-400">
+                  <button
+                    disabled={candidatePage === 1}
+                    onClick={() => setCandidatePage(p => Math.max(1, p - 1))}
+                    className="px-3 py-1.5 bg-slate-900 hover:bg-slate-850 border border-slate-800 rounded-lg disabled:opacity-40 transition-colors active:scale-95"
+                  >
+                    Previous
+                  </button>
+                  <span>Page {candidatePage} of {totalCandidatePages} ({filteredCandidates.length} Total)</span>
+                  <button
+                    disabled={candidatePage === totalCandidatePages}
+                    onClick={() => setCandidatePage(p => Math.min(totalCandidatePages, p + 1))}
+                    className="px-3 py-1.5 bg-slate-900 hover:bg-slate-850 border border-slate-800 rounded-lg disabled:opacity-40 transition-colors active:scale-95"
+                  >
+                    Next
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* -------------------- 6. CONTACT REQUESTS TAB -------------------- */}
+        {activeTab === 'contacts' && (
+          <div className="space-y-6 animate-fadeIn">
+            {/* Header Search */}
+            <div className="bg-slate-900/40 p-4 border border-slate-800 rounded-3xl glass-card flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+              <h3 className="font-poppins font-bold text-lg text-white">Contact Form Submissions</h3>
+              <div className="w-full sm:w-72">
+                <input
+                  type="text"
+                  value={contactSearch}
+                  onChange={(e) => { setContactSearch(e.target.value); setContactPage(1); }}
+                  placeholder="Search inquiries..."
+                  className="w-full px-3.5 py-2.5 border border-slate-850 rounded-xl text-xs text-white bg-slate-950 outline-none focus:border-primary"
+                />
+              </div>
+            </div>
+
+            {/* Contacts Table */}
+            <div className="bg-slate-900/40 rounded-3xl border border-slate-800 shadow-2xl glass-card overflow-hidden">
+              <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse text-sm">
+                  <thead>
+                    <tr className="bg-slate-950 text-white font-poppins font-semibold border-b border-slate-800 select-none">
+                      <th className="p-4">Sender Info</th>
+                      <th className="p-4">Subject</th>
+                      <th className="p-4">Message Inquiry</th>
+                      <th className="p-4">Submission Date</th>
+                      <th className="p-4 text-center">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-850">
+                    {currentContacts.length === 0 ? (
+                      <tr>
+                        <td colSpan={5} className="p-12 text-center text-slate-500">
+                          No contact form requests logged yet.
+                        </td>
+                      </tr>
+                    ) : (
+                      currentContacts.map(req => (
+                        <tr key={req._id} className="hover:bg-slate-900/50 transition-colors">
+                          <td className="p-4">
+                            <p className="font-bold text-white">{req.name}</p>
+                            <p className="text-xs text-slate-450">{req.email}</p>
+                          </td>
+                          <td className="p-4 text-xs font-semibold text-white">
+                            {req.subject}
+                          </td>
+                          <td className="p-4 text-xs text-slate-400 max-w-md break-words">
+                            {req.message}
+                          </td>
+                          <td className="p-4 text-xs text-slate-500 font-bold">
+                            {req.createdAt ? new Date(req.createdAt).toLocaleString() : 'N/A'}
+                          </td>
+                          <td className="p-4 text-center">
+                            <button
+                              onClick={() => handleDeleteContact(req._id)}
+                              className="p-1.5 border border-red-900/40 bg-slate-950 rounded-lg hover:bg-red-950/20 transition-colors text-red-400 hover:text-red-300"
+                              title="Delete Submission"
+                            >
+                              <Trash2 className="w-4 h-4" />
+                            </button>
+                          </td>
+                        </tr>
+                      ))
+                    )}
+                  </tbody>
+                </table>
+              </div>
+
+              {/* Pagination */}
+              {totalContactPages > 1 && (
+                <div className="flex justify-between items-center px-6 py-4 border-t border-slate-850 bg-slate-950 text-xs font-bold text-slate-400">
+                  <button
+                    disabled={contactPage === 1}
+                    onClick={() => setContactPage(p => Math.max(1, p - 1))}
+                    className="px-3 py-1.5 bg-slate-900 hover:bg-slate-850 border border-slate-800 rounded-lg disabled:opacity-40 transition-colors active:scale-95"
+                  >
+                    Previous
+                  </button>
+                  <span>Page {contactPage} of {totalContactPages} ({filteredContacts.length} Total)</span>
+                  <button
+                    disabled={contactPage === totalContactPages}
+                    onClick={() => setContactPage(p => Math.min(totalContactPages, p + 1))}
+                    className="px-3 py-1.5 bg-slate-900 hover:bg-slate-850 border border-slate-800 rounded-lg disabled:opacity-40 transition-colors active:scale-95"
+                  >
+                    Next
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         )}
